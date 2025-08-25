@@ -13,11 +13,55 @@
     <div id="countdown"></div>
   </header>
 
-  <!-- Video Aleatorio -->
+  <!-- 🎵 Spotify Player -->
+  <section class="spotify-section" id="spotifySection">
+    <h2>🎵 Música para celebrar 🎵</h2>
+    <iframe id="spotify-player" 
+            src="https://open.spotify.com/embed/playlist/7iPGbzVxo4MnM6ej49KSrt?utm_source=generator&theme=0" 
+            frameborder="0" 
+            allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy">
+    </iframe>
+    <div class="spotify-controls">
+      <button class="control-btn" onclick="toggleSpotifySize()">📱 Minimizar/Maximizar</button>
+      <button class="control-btn" onclick="scrollToSpotify()">🎵 Ir al reproductor</button>
+    </div>
+    <p style="font-size: 12px; color: #666; margin-top: 10px;">
+      💡 <strong>Tip:</strong> Haz clic en ▶️ dentro del reproductor de Spotify para iniciar la música. Se minimizará automáticamente cuando veas videos.
+    </p>
+  </section>
+   <!-- 🎰 Video Roulette -->
   <section class="video-section">
     <h2>Un mensaje sorpresa de tus amigas 🎥</h2>
-    <video id="randomVideo" controls autoplay></video>
-    <button onclick="loadRandomVideo()">Ver otro mensaje 🎥</button>
+    
+    <!-- Ruleta de Videos -->
+    <div id="videoRoulette" class="video-roulette">
+      <div class="roulette-title">🎰 ¡Gira la Ruleta de Sorpresas! 🎰</div>
+      <button id="startRouletteBtn" onclick="startVideoRoulette()">
+        🎲 ¡GIRAR RULETA! 🎲
+      </button>
+      
+      <!-- Ruleta circular -->
+      <div id="rouletteContainer" class="roulette-container">
+        <div class="roulette-pointer">▼</div>
+        <div id="rouletteWheel" class="roulette-wheel">
+          <div id="roulettePhotos" class="roulette-photos"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Container del video seleccionado -->
+    <div id="videoContainer" class="video-container">
+      <div class="video-player">
+        <video id="randomVideo" controls>
+          <source src="" type="video/mp4">
+          Tu navegador no soporta el elemento video.
+        </video>
+      </div>
+      <button onclick="showRoulette()">🎲 Girar otra vez</button>
+      <button onclick="loadRandomVideo()">🎥 Video aleatorio</button>
+    </div>
   </section>
 
   <!-- Galería de fotos -->
