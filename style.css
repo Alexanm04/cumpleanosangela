@@ -1,0 +1,151 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #b909dc, #ffe4e1);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+header {
+  padding: 15px;
+  background-color: #b074e7;
+  color: white;
+  font-size: clamp(18px, 4vw, 26px);
+  font-weight: bold;
+  position: relative;
+  z-index: 10;
+}
+
+#countdown {
+  font-size: clamp(14px, 3vw, 20px);
+  margin: 10px 0;
+}
+
+section {
+  padding: 30px 15px;
+  position: relative;
+  z-index: 10;
+}
+
+h2 {
+  font-size: clamp(18px, 5vw, 28px);
+  margin-bottom: 20px;
+}
+
+.video-player {
+  max-width: 100%;
+  margin: 0 auto;
+  border: 3px solid #ff6699;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+}
+
+video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+.messages {
+  max-width: 90%;
+  margin: 0 auto;
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-size: clamp(14px, 3.5vw, 18px);
+  text-align: left;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  background-color: #ff6699;
+  color: white;
+  font-size: clamp(14px, 4vw, 18px);
+  border-radius: 10px;
+  cursor: pointer;
+  width: auto;
+  min-width: 150px;
+}
+
+button:hover {
+  background-color: #e05585;
+}
+
+/* 🎈 Globos */
+.balloon {
+  position: fixed;
+  bottom: -150px;
+  width: 40px;
+  height: 60px;
+  border-radius: 50%;
+  animation: float 8s infinite ease-in;
+  z-index: 1;
+}
+@keyframes float {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-120vh); opacity: 0; }
+}
+
+/* ❤️ Corazones */
+.heart {
+  position: fixed;
+  bottom: -50px;
+  color: #ff3366;
+  font-size: 20px;
+  animation: rise 6s infinite ease-in;
+  z-index: 1;
+}
+@keyframes rise {
+  from { transform: translateY(0) scale(1); opacity: 1; }
+  to { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+}
+
+/* 🎊 Confeti */
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  top: -20px;
+  animation: fall 5s linear infinite;
+  z-index: 1;
+}
+@keyframes fall {
+  from { transform: translateY(0) rotate(0deg); opacity: 1; }
+  to { transform: translateY(120vh) rotate(360deg); opacity: 0; }
+}
+
+/* 📱 Ajustes para móvil */
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  button {
+    width: 100%;
+  }
+}

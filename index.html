@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Cumpleaños 💖</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    🎉 ¡Feliz Cumpleaños Ángela! 🎂
+    <div id="countdown"></div>
+  </header>
+
+  <!-- Video Aleatorio -->
+  <section class="video-section">
+    <h2>Un mensaje sorpresa de tus amigas 🎥</h2>
+    <video id="randomVideo" controls autoplay></video>
+    <button onclick="loadRandomVideo()">Ver otro mensaje 🎥</button>
+  </section>
+
+  <!-- Galería de fotos -->
+  <section>
+    <h2>Momentos Inolvidables 📸</h2>
+    <div class="gallery">
+      <img src="foto1.jpg" alt="Recuerdo 1">
+      <img src="foto2.jpg" alt="Recuerdo 2">
+      <img src="foto3.jpg" alt="Recuerdo 3">
+    </div>
+  </section>
+
+  <!-- Muro de mensajes -->
+  <section>
+    <h2>Lo que dicen tus amigas 💖</h2>
+    <div class="messages">
+      <p>“Eres la persona más increíble que conozco. Feliz cumple 🥳 - Ana”</p>
+      <p>“Gracias por tantos momentos juntas 💕 - Laura”</p>
+      <p>“Siempre serás nuestra alegría 🌸 - Marta”</p>
+    </div>
+  </section>
+
+  <!-- Sorpresa Final -->
+  <section>
+    <h2>✨ Sorpresa Especial ✨</h2>
+    <button onclick="revealSurprise()">Desbloquear sorpresa 🎁</button>
+    <div id="surprise" class="hidden">
+      <h3>💖 Te quiero con todo mi corazón 💖</h3>
+      <video controls>
+        <source src="sorpresa.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
