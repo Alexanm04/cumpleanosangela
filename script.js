@@ -14,7 +14,7 @@ const videos = [
   },
   { 
     src: "video9.mp4", 
-    title: "Recuerdo de Marta 🌸", 
+    title: "Recuerdo de Petra 🌸", 
     thumbnail: "aug225.jpg",
     person: "Marta"
   }
