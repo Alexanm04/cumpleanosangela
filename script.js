@@ -28,15 +28,13 @@ let currentRotation = 0;
 // 🎰 FUNCIONES DE LA RULETA
 function createRoulettePhotos() {
       const container = document.getElementById("roulettePhotos");
-      const totalVideos = videos.length;
       
       container.innerHTML = '';
       
       videos.forEach((video, index) => {
-        const angle = (360 / totalVideos) * index;
         const item = document.createElement('div');
         item.className = 'roulette-item';
-        item.style.transform = `translate(-50%, -50%) rotate(${angle}deg) translateY(-100px) rotate(-${angle}deg)`;
+        item.dataset.index = index;
         
         item.innerHTML = `
           <div class="video-preview">
@@ -44,7 +42,7 @@ function createRoulettePhotos() {
             <img src="${video.thumbnail}" 
                  alt="${video.title}" 
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="placeholder-title" style="display:none; font-size:10px; color:#666;">${video.person}</div>
+            <div class="placeholder-title" style="display:none; font-size:14px; color:#666; padding:20px;">${video.person}</div>
           </div>
           <h4>${video.title}</h4>
         `;
@@ -56,91 +54,94 @@ function createRoulettePhotos() {
     function startVideoRoulette() {
       if (isSpinning) return;
       
-      console.log('🎰 Iniciando ruleta...');
+      console.log('🎰 Iniciando carrusel...');
       isSpinning = true;
       
       const startBtn = document.getElementById("startRouletteBtn");
       const container = document.getElementById("rouletteContainer");
-      const photosContainer = document.getElementById("roulettePhotos");
       
       startBtn.style.display = "none";
       container.style.display = "block";
       
-      // Crear las fotos en la ruleta
+      // Crear las fotos en el carrusel
       createRoulettePhotos();
       
       // Iniciar animación inmediatamente
       setTimeout(() => {
-        startSpinAnimation();
+        startCarouselAnimation();
       }, 500);
     }
 
-    function startSpinAnimation() {
-      const photosContainer = document.getElementById("roulettePhotos");
+    function startCarouselAnimation() {
       let currentIndex = 0;
-      let speed = 100; // Velocidad inicial
-      const maxSpeed = 1200; // Velocidad final más lenta
-      const acceleration = 1.08; // Factor de desaceleración
+      let speed = 80; // Velocidad inicial rápida
+      const maxSpeed = 1000; // Velocidad final más lenta
+      const acceleration = 1.12; // Factor de desaceleración
       let totalSpins = 0;
-      const maxTotalSpins = Math.floor(Math.random() * 25) + 40; // Entre 40-65 cambios
+      const maxTotalSpins = Math.floor(Math.random() * 25) + 35; // Entre 35-60 cambios
       
       function animateStep() {
-        // Limpiar clases anteriores
+        // Ocultar todos los elementos
         const items = document.querySelectorAll('.roulette-item');
-        items.forEach(item => {
+        items.forEach((item, index) => {
           item.classList.remove('active');
-          item.style.transform = item.style.transform.replace(' scale(1.2)', '');
+          if (index === currentIndex) {
+            item.classList.add('active');
+          }
         });
-        
-        // Resaltar elemento actual
-        if (items[currentIndex]) {
-          items[currentIndex].classList.add('active');
-          // Hacer más grande el elemento seleccionado
-          const currentTransform = items[currentIndex].style.transform;
-          items[currentIndex].style.transform = currentTransform + ' scale(1.2)';
-        }
         
         currentIndex = (currentIndex + 1) % videos.length;
         totalSpins++;
         
-        console.log(`🎲 Spin ${totalSpins}/${maxTotalSpins}, velocidad: ${speed}ms`);
+        console.log(`🎲 Foto ${totalSpins}/${maxTotalSpins}, velocidad: ${speed}ms, mostrando: ${videos[currentIndex === 0 ? videos.length - 1 : currentIndex - 1].person}`);
         
         if (totalSpins < maxTotalSpins) {
-          // Aumentar velocidad gradualmente (hacer más lento)
-          if (totalSpins > maxTotalSpins * 0.7) { // En las últimas 30% de vueltas
+          // Aumentar velocidad gradualmente (hacer más lento) en las últimas vueltas
+          if (totalSpins > maxTotalSpins * 0.6) {
             speed *= acceleration;
           }
           setTimeout(animateStep, speed);
         } else {
-          // Finalizar ruleta
+          // Finalizar en la foto actual
+          const finalIndex = currentIndex === 0 ? videos.length - 1 : currentIndex - 1;
           setTimeout(() => {
-            finishRoulette(currentIndex === 0 ? videos.length - 1 : currentIndex - 1);
+            finishCarousel(finalIndex);
           }, 800);
         }
       }
       
-      animateStep();
+      // Mostrar la primera foto y comenzar
+      const items = document.querySelectorAll('.roulette-item');
+      if (items[0]) {
+        items[0].classList.add('active');
+      }
+      
+      setTimeout(animateStep, speed);
     }
 
-    function finishRoulette(finalIndex) {
+    function finishCarousel(finalIndex) {
       const selectedVideo = videos[finalIndex];
       
       console.log('🎯 Video seleccionado:', selectedVideo.title);
       
-      // Limpiar todas las clases y resaltar solo el ganador
+      // Marcar como ganador
       const items = document.querySelectorAll('.roulette-item');
       items.forEach((item, index) => {
         item.classList.remove('active');
-        item.style.transform = item.style.transform.replace(' scale(1.2)', '');
-        
         if (index === finalIndex) {
           item.classList.add('winner');
+          
           // Agregar efectos de ganador
           if (!item.querySelector('.winner-glow')) {
-            item.innerHTML += '<div class="winner-glow"></div>';
+            const glow = document.createElement('div');
+            glow.className = 'winner-glow';
+            item.appendChild(glow);
           }
           if (!item.querySelector('.winner-text')) {
-            item.innerHTML += '<div class="winner-text">🎉 ¡SELECCIONADO! 🎉</div>';
+            const text = document.createElement('div');
+            text.className = 'winner-text';
+            text.innerHTML = '🎉 ¡SELECCIONADO! 🎉';
+            item.appendChild(text);
           }
         }
       });
@@ -153,7 +154,7 @@ function createRoulettePhotos() {
         source.src = selectedVideo.src;
         video.load();
         
-        // Ocultar ruleta y mostrar video
+        // Ocultar carrusel y mostrar video
         document.getElementById("videoRoulette").style.display = "none";
         document.getElementById("videoContainer").style.display = "block";
         
@@ -169,16 +170,14 @@ function createRoulettePhotos() {
     }
 
     function showRoulette() {
-      console.log('🎲 Mostrando ruleta nuevamente');
+      console.log('🎲 Mostrando carrusel nuevamente');
       
       // Resetear estado
       isSpinning = false;
-      currentVideoIndex = 0;
       
       // Limpiar contenedor de fotos
       const photosContainer = document.getElementById("roulettePhotos");
       photosContainer.innerHTML = '';
-      photosContainer.style.transform = 'rotate(0deg)';
       
       // Mostrar elementos correctos
       document.getElementById("videoRoulette").style.display = "block";
