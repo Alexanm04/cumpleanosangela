@@ -59,28 +59,110 @@
           Tu navegador no soporta el elemento video.
         </video>
       </div>
-      <button onclick="showRoulette()">🎲 Girar otra vez</button>
-      <button onclick="loadRandomVideo()">🎥 Video aleatorio</button>
+      <div class="video-buttons">
+        <button onclick="showRoulette()">🎲 Girar otra vez</button>
+        <button onclick="loadRandomVideo()">🎥 Video aleatorio</button>
+      </div>
     </div>
   </section>
 
-  <!-- Galería de fotos -->
+  <!-- Galería de fotos personalizadas -->
   <section>
     <h2>Momentos Inolvidables 📸</h2>
-    <div class="gallery">
-      <img src="foto1.jpg" alt="Recuerdo 1">
-      <img src="foto2.jpg" alt="Recuerdo 2">
-      <img src="foto3.jpg" alt="Recuerdo 3">
+    <p style="margin-bottom: 25px; font-size: 16px; color: #555;">Haz clic en cada foto para ver los recuerdos que cada persona quiere compartir contigo</p>
+    
+    <div class="personal-galleries">
+      <div class="person-card" onclick="openPersonGallery('ana')">
+        <div class="person-photo">
+          <img src="ana_profile.jpg" alt="Ana" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiNmZjY2OTkiLz48dGV4dCB4PSI1MCIgeT0iNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIzNiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkE8L3RleHQ+PC9zdmc+';">
+          <div class="photo-overlay">
+            <span class="view-icon">👁️</span>
+            <span class="photo-count" id="ana-count">5 recuerdos</span>
+          </div>
+        </div>
+        <h3>Ana 💕</h3>
+        <p>Mis momentos favoritos contigo</p>
+      </div>
+
+      <div class="person-card" onclick="openPersonGallery('laura')">
+        <div class="person-photo">
+          <img src="laura_profile.jpg" alt="Laura" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiM2NmNjZmYiLz48dGV4dCB4PSI1MCIgeT0iNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIzNiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkw8L3RleHQ+PC9zdmc+';">
+          <div class="photo-overlay">
+            <span class="view-icon">👁️</span>
+            <span class="photo-count" id="laura-count">8 recuerdos</span>
+          </div>
+        </div>
+        <h3>Laura 🌸</h3>
+        <p>Nuestras aventuras juntas</p>
+      </div>
+
+      <div class="person-card" onclick="openPersonGallery('marta')">
+        <div class="person-photo">
+          <img src="marta_profile.jpg" alt="Marta" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiNmZmNjNjYiLz48dGV4dCB4PSI1MCIgeT0iNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIzNiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk08L3RleHQ+PC9zdmc+';">
+          <div class="photo-overlay">
+            <span class="view-icon">👁️</span>
+            <span class="photo-count" id="marta-count">6 recuerdos</span>
+          </div>
+        </div>
+        <h3>Marta ✨</h3>
+        <p>Risas y buenos momentos</p>
+      </div>
+
+      <div class="person-card" onclick="openPersonGallery('otros')">
+        <div class="person-photo">
+          <img src="grupo_profile.jpg" alt="Más amigos" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiM5OTY2ZmYiLz48dGV4dCB4PSI1MCIgeT0iNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIzNiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPis8L3RleHQ+PC9zdmc+';">
+          <div class="photo-overlay">
+            <span class="view-icon">👁️</span>
+            <span class="photo-count" id="otros-count">10 recuerdos</span>
+          </div>
+        </div>
+        <h3>Más Amigos 👥</h3>
+        <p>Recuerdos de todo el grupo</p>
+      </div>
     </div>
   </section>
+
+  <!-- Modal de Galería Personal -->
+  <div id="personalGalleryModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="galleryTitle">Recuerdos de...</h2>
+        <span class="close" onclick="closePersonGallery()">&times;</span>
+      </div>
+      
+      <div class="modal-body">
+        <div class="gallery-tabs">
+          <button class="tab-btn active" onclick="switchTab('photos')">📷 Fotos</button>
+          <button class="tab-btn" onclick="switchTab('videos')">🎥 Videos</button>
+        </div>
+        
+        <div id="photosTab" class="tab-content active">
+          <div id="personalPhotos" class="personal-gallery"></div>
+        </div>
+        
+        <div id="videosTab" class="tab-content">
+          <div id="personalVideos" class="personal-gallery"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox para ver fotos/videos en grande -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-content">
+      <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+      <div id="lightboxMedia"></div>
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
 
   <!-- Muro de mensajes -->
   <section>
     <h2>Lo que dicen tus amigas 💖</h2>
     <div class="messages">
-      <p>“Eres la persona más increíble que conozco. Feliz cumple 🥳 - Ana”</p>
-      <p>“Gracias por tantos momentos juntas 💕 - Laura”</p>
-      <p>“Siempre serás nuestra alegría 🌸 - Marta”</p>
+      <p>"Eres la persona más increíble que conozco. Feliz cumple 🥳 - Ana"</p>
+      <p>"Gracias por tantos momentos juntas 💕 - Laura"</p>
+      <p>"Siempre serás nuestra alegría 🌸 - Marta"</p>
     </div>
   </section>
 
