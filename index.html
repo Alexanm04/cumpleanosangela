@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <header>
+    <div class="banner-overlay"></div>
     🎉 ¡Feliz Cumpleaños Ángela! 🎂
     <div id="countdown"></div>
   </header>
@@ -156,13 +156,50 @@
     </div>
   </div>
 
-  <!-- Muro de mensajes -->
+<!-- Carrusel de mensajes -->
   <section>
     <h2>Lo que dicen tus amigas 💖</h2>
-    <div class="messages">
-      <p>"Eres la persona más increíble que conozco. Feliz cumple 🥳 - Ana"</p>
-      <p>"Gracias por tantos momentos juntas 💕 - Laura"</p>
-      <p>"Siempre serás nuestra alegría 🌸 - Marta"</p>
+    <div class="messages-carousel">
+      <button class="carousel-btn prev-btn" onclick="changeMessage(-1)">‹</button>
+      
+      <div class="messages-container">
+        <div class="message-card active" data-index="0">
+          <div class="message-content">
+            <p>"Eres la persona más increíble que conozco. Feliz cumple 🥳"</p>
+            <span class="message-author">- Ana 💕</span>
+          </div>
+        </div>
+        
+        <div class="message-card" data-index="1">
+          <div class="message-content">
+            <p>"Gracias por tantos momentos juntas. Eres especial"</p>
+            <span class="message-author">- Laura 🌸</span>
+          </div>
+        </div>
+        
+        <div class="message-card" data-index="2">
+          <div class="message-content">
+            <p>"Siempre serás nuestra alegría y luz en días grises"</p>
+            <span class="message-author">- Marta ✨</span>
+          </div>
+        </div>
+        
+        <div class="message-card" data-index="3">
+          <div class="message-content">
+            <p>"Una amiga como tú es un tesoro que se encuentra una vez en la vida"</p>
+            <span class="message-author">- Todo el grupo 💥</span>
+          </div>
+        </div>
+      </div>
+      
+      <button class="carousel-btn next-btn" onclick="changeMessage(1)">›</button>
+    </div>
+    
+    <div class="carousel-indicators">
+      <span class="indicator active" onclick="goToMessage(0)"></span>
+      <span class="indicator" onclick="goToMessage(1)"></span>
+      <span class="indicator" onclick="goToMessage(2)"></span>
+      <span class="indicator" onclick="goToMessage(3)"></span>
     </div>
   </section>
 
@@ -177,7 +214,9 @@
       </video>
     </div>
   </section>
-
+  <audio id="background-music" autoplay muted>
+  <source src="felizcumpleanos.mp3" type="audio/mpeg">
+</audio>
   <script src="script.js"></script>
 </body>
 </html>

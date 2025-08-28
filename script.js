@@ -384,7 +384,7 @@ function loadPersonalVideos(person) {
         <img class="video-thumbnail" 
              src="${thumbnailSrc}" 
              alt="${video.caption}"
-             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjE1MCIgaGVpZ2h0PSIxNTAiIGZpbGw9ImxpbmVhci1ncmFkaWVudCgxMzVkZWcsICNmZjY2OTkgMCUsICM2NmNjZmYgMTAwJSkiLz48Y2lyY2xlIGN4PSI3NSIgY3k9Ijc1IiByPSIyNSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjkpIi8+PHBhdGggZD0iTTY4IDYwTDkwIDc1TDY4IDkwVjYwWiIgZmlsbD0iI2ZmMzM2NiIvPjx0ZXh0IHg9Ijc1IiB5PSIxMjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iI2ZmMzM2NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9ImJvbGQiPldJREVPPC90ZXh0Pjwvc3ZnPg==';">
+             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjE1MCIgaGVpZ2h0PSIxNTAiIGZpbGw9ImxpbmVhci1ncmFkaWVudCgxMzVkZWcsICNmZjY2OTkgMCUsICM2NmNjZmYgMTAwJSkiLz48Y2lyY2xlIGN4PSI3NSIgY3k9Ijc1IiByPSIyNSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjkpIi8+PHBhdGggZD0iTTY4IDYwTDkwIDc1TDY4IDkwVjYwWiIgZmlsbD0iI2ZmMzM2NiIvPjx0ZXh0IHg9Ijc1IiB5PSIxMjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iI2ZmMzM2NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9ImJvbGQiPlZJREVPPC90ZXh0Pjwvc3ZnPg==';"
         <div class="video-indicator">🎥</div>
         <div class="video-play-overlay">
           <div class="play-button">▶</div>
@@ -410,7 +410,7 @@ function createVideoThumbnail(videoSrc) {
       <rect width="150" height="150" fill="linear-gradient(135deg, #${color} 0%, #${color}88 100%)"/>
       <circle cx="75" cy="75" r="25" fill="rgba(255,255,255,0.9)"/>
       <path d="M68 60L90 75L68 90V60Z" fill="#ff3366"/>
-      <text x="75" y="120" font-family="Arial" font-size="12" fill="#ff3366" text-anchor="middle" font-weight="bold">VIDEO</text>
+       <text x="75" y="120" font-family="Arial" font-size="12" fill="#ff3366" text-anchor="middle" font-weight="bold">VIDEO</text>
     </svg>
   `)}`
 }
@@ -584,6 +584,82 @@ function setupVideoControls() {
   });
 }
 
+// 💬 CARRUSEL DE MENSAJES
+let currentMessageIndex = 0;
+const totalMessages = 4;
+
+function changeMessage(direction) {
+  const cards = document.querySelectorAll('.message-card');
+  const indicators = document.querySelectorAll('.indicator');
+  
+  // Remover clases actuales
+  cards[currentMessageIndex].classList.remove('active');
+  indicators[currentMessageIndex].classList.remove('active');
+  
+  // Calcular nuevo índice
+  currentMessageIndex += direction;
+  
+  // Hacer loop circular
+  if (currentMessageIndex >= totalMessages) {
+    currentMessageIndex = 0;
+  } else if (currentMessageIndex < 0) {
+    currentMessageIndex = totalMessages - 1;
+  }
+  
+  // Aplicar nuevas clases
+  setTimeout(() => {
+    cards[currentMessageIndex].classList.add('active');
+    indicators[currentMessageIndex].classList.add('active');
+  }, 50);
+  
+  console.log(`📝 Mensaje cambiado a índice: ${currentMessageIndex}`);
+}
+
+function goToMessage(index) {
+  if (index === currentMessageIndex) return;
+  
+  const cards = document.querySelectorAll('.message-card');
+  const indicators = document.querySelectorAll('.indicator');
+  
+  // Remover clases actuales
+  cards[currentMessageIndex].classList.remove('active');
+  indicators[currentMessageIndex].classList.remove('active');
+  
+  // Establecer nuevo índice
+  currentMessageIndex = index;
+  
+  // Aplicar nuevas clases
+  setTimeout(() => {
+    cards[currentMessageIndex].classList.add('active');
+    indicators[currentMessageIndex].classList.add('active');
+  }, 50);
+  
+  console.log(`🎯 Saltando directamente al mensaje: ${currentMessageIndex}`);
+}
+
+// Auto-avanzar el carrusel cada 8 segundos
+let messageInterval;
+
+function startMessageAutoplay() {
+  messageInterval = setInterval(() => {
+    changeMessage(1);
+  }, 8000);
+}
+
+function stopMessageAutoplay() {
+  if (messageInterval) {
+    clearInterval(messageInterval);
+  }
+}
+
+// Pausar autoplay cuando el usuario interactúa
+function pauseAutoplayOnInteraction() {
+  stopMessageAutoplay();
+  setTimeout(() => {
+    startMessageAutoplay();
+  }, 10000); // Reanudar después de 10 segundos sin interacción
+}
+
 // 🎂 Cuenta atrás
 function startCountdown() {
   const countdown = document.getElementById("countdown");
@@ -648,7 +724,6 @@ window.onload = function() {
   const roulette = document.getElementById("videoRoulette");
   const startBtn = document.getElementById("startRouletteBtn");
   const wheel = document.getElementById("rouletteWheel");
-  
   if (!roulette || !startBtn || !wheel) {
     console.error('Elementos de la ruleta no encontrados');
     return;
@@ -658,7 +733,6 @@ window.onload = function() {
   setupVideoControls();
   startCountdown();
   launchHearts();
-  
   // Efectos especiales
   setTimeout(launchConfetti, 2000);
   setTimeout(launchBalloons, 4000);
@@ -695,3 +769,111 @@ window.onload = function() {
   
   console.log('✅ Inicialización completa - Galerías personales listas');
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+  const bg = document.getElementById("background-music");
+  if (!bg) return;
+
+  bg.volume = 0.3;
+  let audioActivated = false;
+  let hasPlayed = false; // Nueva variable para controlar que solo se reproduzca una vez
+
+  // Intenta precargar en silencio
+  bg.play().catch(() => { /* está bien, solo precargando */ });
+
+  const activate = () => {
+    if (audioActivated || hasPlayed) return;
+    
+    bg.muted = false;
+    bg.removeAttribute("muted");
+    
+    const playPromise = bg.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          console.log("🎵 Música activada exitosamente");
+          audioActivated = true;
+          hasPlayed = true;
+          cleanup();
+        })
+        .catch(err => {
+          console.log("⚠️ No se pudo iniciar audio:", err.message);
+          // Reintenta después de un breve delay
+          setTimeout(() => {
+            if (!hasPlayed) {
+              bg.play().then(() => {
+                console.log("🎵 Música activada en segundo intento");
+                audioActivated = true;
+                hasPlayed = true;
+                cleanup();
+              }).catch(() => {});
+            }
+          }, 100);
+        });
+    }
+  };
+
+  // Eventos más agresivos para capturar la primera interacción
+  const events = ["mousedown", "touchstart", "click", "keydown", "scroll", "wheel", "mousemove"];
+  const options = { once: true, passive: true, capture: true };
+
+  function cleanup(){
+    events.forEach(ev => {
+      window.removeEventListener(ev, activate, true);
+      document.removeEventListener(ev, activate, true);
+    });
+  }
+
+  // Agregar listeners con diferentes estrategias
+  events.forEach(ev => {
+    window.addEventListener(ev, activate, options);
+    document.addEventListener(ev, activate, options);
+  });
+
+  // Listener especial para scroll que no sea "once"
+  let scrollAttempts = 0;
+  const scrollHandler = () => {
+    if (!audioActivated && !hasPlayed && scrollAttempts < 3) {
+      scrollAttempts++;
+      activate();
+    }
+  };
+  
+  window.addEventListener('scroll', scrollHandler, { passive: true });
+  document.addEventListener('scroll', scrollHandler, { passive: true });
+
+  // Intento adicional cuando la página está completamente cargada
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      if (!audioActivated && !hasPlayed) {
+        activate();
+      }
+    }, 1000);
+  });
+
+  // Listener para cuando termine el audio - NO reiniciar
+  bg.addEventListener('ended', () => {
+    console.log("🎵 Audio terminado - no se reiniciará");
+    hasPlayed = true;
+  });
+
+  // Prevenir que se reinicie si alguien cambia de pestaña y vuelve
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && audioActivated && bg.paused && !hasPlayed) {
+      // Solo reanudar si no ha terminado completamente
+      if (bg.currentTime < bg.duration) {
+        bg.play().catch(()=>{});
+      }
+    }
+  });
+
+  // Manejo mejorado de errores
+  bg.addEventListener("error", (e) => {
+    console.log("❌ Error de audio:", e.target.error);
+  });
+
+  bg.addEventListener("canplaythrough", () => {
+    console.log("📡 Audio listo para reproducir");
+  });
+});
+
