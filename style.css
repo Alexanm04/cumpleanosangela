@@ -961,7 +961,7 @@ header {
 
     .messages-container {
       position: relative;
-      width: 100%;
+      width: 900px;
       height: 280px;
       overflow: hidden;
       border-radius: 20px;
