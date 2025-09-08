@@ -870,15 +870,22 @@ header {
     @media (max-width: 400px) {
       /* Header aún más optimizado para móviles pequeños */
       header {
-        min-height: 350px;
-        padding: 40px 15px;
+        min-height: 400px;
+        padding: 30px 15px;
         font-size: 16px;
+        background-position: center center;
+        background-size: cover;
       }
       
-      /* Mensajes más compactos */
+      /* Carrusel de mensajes optimizado para pantallas muy pequeñas */
+      .messages-carousel {
+        padding: 0 5px;
+        gap: 10px;
+      }
+      
       .messages-container {
         height: 280px;
-        margin: 0 5px;
+        margin: 0;
       }
       
       .message-card {
@@ -886,9 +893,29 @@ header {
       }
       
       .message-content p {
-        font-size: 15px !important;
+        font-size: 14px !important;
         padding: 0;
         margin-bottom: 15px;
+        line-height: 1.3;
+      }
+      
+      .message-content p::before,
+      .message-content p::after {
+        font-size: 30px;
+      }
+      
+      .message-content p::before {
+        top: -10px;
+        left: -3px;
+      }
+      
+      .message-content p::after {
+        bottom: -20px;
+        right: -3px;
+      }
+      
+      .message-author {
+        font-size: 12px !important;
       }
       
       .carousel-btn {
@@ -897,9 +924,14 @@ header {
         font-size: 16px;
       }
       
-      .messages-carousel {
+      .carousel-indicators {
         gap: 8px;
-        padding: 0;
+        margin-top: 10px;
+      }
+      
+      .indicator {
+        width: 10px;
+        height: 10px;
       }
       
       /* Resto de elementos pequeños */
