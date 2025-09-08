@@ -873,8 +873,9 @@ header {
         min-height: 400px;
         padding: 30px 15px;
         font-size: 16px;
-        background-position: center center;
-        background-size: cover;
+        background-position: center bottom;
+        background-size: contain;
+        background-repeat: no-repeat;
       }
       
       /* Carrusel de mensajes optimizado para pantallas muy pequeñas */
