@@ -868,6 +868,41 @@ header {
     }
 
     @media (max-width: 400px) {
+      /* Header aún más optimizado para móviles pequeños */
+      header {
+        min-height: 350px;
+        padding: 40px 15px;
+        font-size: 16px;
+      }
+      
+      /* Mensajes más compactos */
+      .messages-container {
+        height: 280px;
+        margin: 0 5px;
+      }
+      
+      .message-card {
+        padding: 15px 10px;
+      }
+      
+      .message-content p {
+        font-size: 15px !important;
+        padding: 0;
+        margin-bottom: 15px;
+      }
+      
+      .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+      }
+      
+      .messages-carousel {
+        gap: 8px;
+        padding: 0;
+      }
+      
+      /* Resto de elementos pequeños */
       .personal-galleries {
         grid-template-columns: 1fr;
       }
