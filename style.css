@@ -25,7 +25,7 @@ header .banner-img {
 header .banner-text {
   position: absolute;
   z-index: 2;
-  top: 50%;              /* centra en vertical */
+  top: 70%;              /* centra en vertical */
   left: 50%;             /* centra en horizontal */
   transform: translate(-50%, -50%); /* centra en ambos ejes */
   color: white;
