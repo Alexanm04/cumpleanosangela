@@ -25,31 +25,25 @@ header .banner-img {
 header .banner-text {
   position: absolute;
   z-index: 2;
-  top: 70%;              /* centra en vertical */
-  left: 50%;             /* centra en horizontal */
+  top: 70%;                         /* lo bajas un poco */
+  left: 50%;                        /* centrado horizontal */
   transform: translate(-50%, -50%); /* centra en ambos ejes */
   color: white;
   text-align: center;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
-  font-size: clamp(22px, 6vw, 36px);
+  font-size: clamp(18px, 6vw, 36px); /* responsive: más pequeño en móvil */
   font-weight: bold;
   background: rgba(0,0,0,0.4);
   padding: 5px 15px;
   border-radius: 12px;
-  display: inline-block;
+
+  display: block;       /* ocupa todo el ancho disponible */
+  width: 90%;           /* casi toda la imagen */
+  max-width: 600px;     /* en escritorio no se expande demasiado */
+  box-sizing: border-box;
 }
-/* 📱 Ajustes para móviles */
-@media (max-width: 600px) {
-  header .banner-text {
-    font-size: 18px;   /* tamaño más pequeño */
-    top: 60%;          /* centrado un poco más abajo */
-    padding: 6px 10px; /* menos padding */
-    display: block;    /* ocupa todo el ancho disponible */
-    width: 90%;        /* casi todo el ancho de la imagen */
-    max-width: 90%;    /* asegura que no sobresalga */
-    box-sizing: border-box;
-  }
-}
+
+
 
     #countdown {
       font-size: clamp(14px, 3vw, 20px);
