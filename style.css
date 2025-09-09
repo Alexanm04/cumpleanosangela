@@ -22,11 +22,18 @@ header .banner-img {
 
 header .banner-text {
   position: absolute;
-  top: 50%;
+  bottom: 160px; /* distancia desde abajo */
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%); /* solo centrar en horizontal */
   color: white;
   text-align: center;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5); /* mejora legibilidad */
+  font-size: clamp(22px, 6vw, 36px); /* tamaño adaptable */
+  font-weight: bold;
+  background: rgba(0,0,0,0.4);
+  padding: 15px 25px;
+  border-radius: 12px;
+  display: inline-block;
 }
     #countdown {
       font-size: clamp(14px, 3vw, 20px);
