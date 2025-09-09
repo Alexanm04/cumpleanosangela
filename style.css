@@ -878,7 +878,7 @@ header .banner-text {
 
     @media (max-width: 600px) {
   header .banner-text {
-    bottom: 40px; /* más pegado abajo */
+    bottom: 80px; /* más pegado abajo */
     font-size: clamp(16px, 5vw, 24px); /* texto un poco más pequeño */
     padding: 10px 18px;
   }
