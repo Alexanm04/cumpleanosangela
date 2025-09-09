@@ -38,7 +38,13 @@ header .banner-text {
   border-radius: 12px;
   display: inline-block;
 }
-
+@media (max-width: 600px) {
+  header .banner-text {
+    font-size: 18px;  /* más pequeño en móvil */
+    top: 60%;         /* un poco más abajo para centrar mejor */
+    padding: 4px 10px;/* menos padding para que no tape la imagen */
+  }
+}
     #countdown {
       font-size: clamp(14px, 3vw, 20px);
       margin: 10px 0;
