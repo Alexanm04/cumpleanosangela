@@ -8,24 +8,26 @@ body {
     }
 
 header {
-      padding: 80px 30px;
-      background: linear-gradient(rgba(176, 116, 231, 0.4), rgba(185, 9, 220, 0.5)), 
-                  url('banner.jpg') center center no-repeat;
-      background-size: cover;
-      background-attachment: fixed;
-      color: white;
-      font-size: clamp(18px, 4vw, 26px);
-      font-weight: bold;
-      position: relative;
-      z-index: 10;
-      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
-      min-height: 550px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(1px);
-    }
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+header .banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+header .banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
     #countdown {
       font-size: clamp(14px, 3vw, 20px);
       margin: 10px 0;
