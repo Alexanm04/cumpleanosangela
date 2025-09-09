@@ -18,23 +18,27 @@ header .banner-img {
   width: 100%;
   height: auto;
   display: block;
+  z-index: 1;
+  position: relative;
 }
 
 header .banner-text {
   position: absolute;
-  bottom: 160px; /* distancia desde abajo */
-  left: 50%;
-  transform: translateX(-50%); /* solo centrar en horizontal */
+  z-index: 2;
+  top: 50%;              /* centra en vertical */
+  left: 50%;             /* centra en horizontal */
+  transform: translate(-50%, -50%); /* centra en ambos ejes */
   color: white;
   text-align: center;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.5); /* mejora legibilidad */
-  font-size: clamp(22px, 6vw, 36px); /* tamaño adaptable */
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+  font-size: clamp(22px, 6vw, 36px);
   font-weight: bold;
   background: rgba(0,0,0,0.4);
-  padding: 15px 25px;
+  padding: 5px 15px;
   border-radius: 12px;
   display: inline-block;
 }
+
     #countdown {
       font-size: clamp(14px, 3vw, 20px);
       margin: 10px 0;
@@ -876,13 +880,7 @@ header .banner-text {
       }
     }
 
-    @media (max-width: 600px) {
-  header .banner-text {
-    bottom: 80px !important; /* más pegado abajo */
-    font-size: clamp(16px, 5vw, 24px); /* texto un poco más pequeño */
-    padding: 10px 18px;
-  }
-} 
+
 
    /* 💬 CARRUSEL DE MENSAJES */
     .messages-carousel {
