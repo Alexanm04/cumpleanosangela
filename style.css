@@ -38,13 +38,19 @@ header .banner-text {
   border-radius: 12px;
   display: inline-block;
 }
+/* 📱 Ajustes para móviles */
 @media (max-width: 600px) {
   header .banner-text {
-    font-size: 18px;  /* más pequeño en móvil */
-    top: 60%;         /* un poco más abajo para centrar mejor */
-    padding: 4px 10px;/* menos padding para que no tape la imagen */
+    font-size: 18px;   /* tamaño más pequeño */
+    top: 60%;          /* centrado un poco más abajo */
+    padding: 6px 10px; /* menos padding */
+    display: block;    /* ocupa todo el ancho disponible */
+    width: 90%;        /* casi todo el ancho de la imagen */
+    max-width: 90%;    /* asegura que no sobresalga */
+    box-sizing: border-box;
   }
 }
+
     #countdown {
       font-size: clamp(14px, 3vw, 20px);
       margin: 10px 0;
