@@ -680,23 +680,49 @@ window.onload = function() {
 
   // Event listener para la tecla ESC
   // ... (tu código existente)
-
-  console.log('✅ Inicialización completa - Galerías personales listas');
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ... (tu código existente para la música de fondo)
+  const bg = document.getElementById("background-music");
+  if (!bg) return;
 
-  // ** ELIMINA O COMENTA TODO EL BLOQUE DE INICIALIZACIÓN DEL CARRUSEL DE MENSAJES AL FINAL DE DOMContentLoaded **
-  // El carrusel ahora se inicializa en `window.onload` con `scrollToMessage(0);`
-  /*
-  if (cards.length > 0) {
-    updateCarousel(current); // Muestra la primera tarjeta y activa el primer indicador
-    console.log('✅ Carrusel de mensajes inicializado manualmente.');
-  } else {
-    console.warn('No se encontraron tarjetas de mensaje para el carrusel.');
+  bg.volume = 0.3;
+  let audioActivated = false;
+  let hasPlayed = false;
+
+  // Precarga silenciosa
+  bg.play().catch(() => { /* está bien, solo precargando */ });
+
+  const activate = () => {
+    if (audioActivated || hasPlayed) return;
+    bg.muted = false;
+    bg.removeAttribute("muted");
+
+    bg.play().then(() => {
+      console.log("🎵 Música activada exitosamente");
+      audioActivated = true;
+      hasPlayed = true;
+      cleanup();
+    }).catch(err => {
+      console.log("⚠️ No se pudo iniciar audio:", err.message);
+    });
+  };
+
+  // Escuchamos cualquier interacción
+  const events = ["mousedown", "touchstart", "click", "keydown", "scroll", "wheel", "mousemove"];
+  const options = { once: true, passive: true, capture: true };
+
+  function cleanup() {
+    events.forEach(ev => {
+      window.removeEventListener(ev, activate, true);
+      document.removeEventListener(ev, activate, true);
+    });
   }
-  */
+
+  events.forEach(ev => {
+    window.addEventListener(ev, activate, options);
+    document.addEventListener(ev, activate, options);
+  });
 });
 // 🎂 Cuenta atrás
 function startCountdown() {
