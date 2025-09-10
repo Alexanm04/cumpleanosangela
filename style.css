@@ -888,147 +888,85 @@ header .banner-text {
 
 
 
-   /* 💬 CARRUSEL DE MENSAJES */
-    .messages-carousel {
-      position: relative;
-      max-width: 700px;
-      margin: 30px auto;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
+  /* 💬 CARRUSEL DE MENSAJES */
+.messages-carousel {
+  position: relative;
+  max-width: 900px; /* Aumentamos el max-width para que haya espacio para el scroll */
+  margin: 30px auto;
+  /* Elimina display: flex y gap de aquí */
+}
 
-    .messages-container {
-      position: relative;
-      width: 900px;
-      height: 280px;
-      overflow: hidden;
-      border-radius: 20px;
-      background: linear-gradient(135deg, rgba(255, 102, 153, 0.1), rgba(102, 204, 255, 0.1));
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    }
+.messages-container {
+  display: flex; /* Cambiamos a flexbox para el scroll horizontal */
+  overflow-x: scroll; /* Habilitamos el desplazamiento horizontal */
+  scroll-snap-type: x mandatory; /* Para que se detenga en cada tarjeta */
+  -webkit-overflow-scrolling: touch; /* Mejorar el scroll en iOS */
+  scrollbar-width: none; /* Ocultar la barra de desplazamiento en Firefox */
+  position: relative; /* Necesario para que las tarjetas se posicionen */
+  height: 280px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255, 102, 153, 0.1), rgba(102, 204, 255, 0.1));
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  -ms-overflow-style: none;  /* Ocultar barra de desplazamiento en IE/Edge */
+  margin-bottom: 20px; /* Espacio para los indicadores */
+}
 
-    .message-card {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-      box-sizing: border-box;
-      opacity: 0;
-      transform: translateX(100%);
-      transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 20px;
-    }
+/* Ocultar scrollbar para navegadores basados en WebKit */
+.messages-container::-webkit-scrollbar {
+  display: none;
+}
 
-    .message-card.active {
-      opacity: 1;
-      transform: translateX(0);
-    }
+.message-card {
+  flex: 0 0 100%; /* Cada tarjeta ocupa el 100% del ancho del contenedor visible */
+  scroll-snap-align: center; /* Alinea la tarjeta al centro al hacer scroll */
+  width: 100%; /* Asegura que la tarjeta tome su ancho */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  /* Eliminamos las propiedades de opacidad y transform de aquí, ya no son necesarias para el scroll */
+  transition: none; /* No necesitamos transición de transform ya que el scroll lo manejará */
+}
 
-    .message-card.prev {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
+/* Las clases active, prev, next ya no son necesarias para el desplazamiento principal,
+   pero podemos mantener 'active' para los indicadores si queremos resaltar la tarjeta actual. */
+.message-card.active {
+  /* No se necesita ninguna transformación aquí para el desplazamiento */
+  /* Podríamos añadir un pequeño efecto visual si se desea, por ejemplo: */
+  /* box-shadow: 0 0 20px rgba(255, 102, 153, 0.4); */
+}
+.hidden-author {
+  cursor: pointer;
+  color: #999;
+  font-style: italic;
+}
 
-    .message-card.next {
-      opacity: 0;
-      transform: translateX(100%);
-    }
+.revealed {
+  color: #333;
+  font-style: normal;
+}
+/* Eliminar .message-card.prev y .message-card.next ya que no se usarán para el posicionamiento */
 
-    .message-content {
-      text-align: center;
-      width: 100%;
-    }
 
-    .message-content p {
-      font-size: clamp(16px, 3.5vw, 22px);
-      font-weight: 500;
-      color: #333;
-      margin: 0 0 20px 0;
-      line-height: 1.5;
-      font-style: italic;
-      position: relative;
-    }
-
-    .message-content p::before {
-      content: '"';
-      font-size: 50px;
-      color: #ff6699;
-      position: absolute;
-      top: -15px;
-      left: -5px;
-      font-family: serif;
-      opacity: 0.3;
-    }
-
-    .message-content p::after {
-      content: '"';
-      font-size: 50px;
-      color: #ff6699;
-      position: absolute;
-      bottom: -30px;
-      right: -5px;
-      font-family: serif;
-      opacity: 0.3;
-    }
-
-    .message-author {
-      font-size: clamp(14px, 3vw, 18px);
-      font-weight: bold;
-      color: #ff6699;
-      background: linear-gradient(135deg, #ff6699, #66ccff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .carousel-indicators {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .indicator {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(255, 102, 153, 0.3);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .indicator.active {
-      background: #ff6699;
-      transform: scale(1.3);
-      box-shadow: 0 0 10px rgba(255, 102, 153, 0.5);
-    }
-
-    .indicator:hover:not(.active) {
-      background: rgba(255, 102, 153, 0.6);
-      transform: scale(1.1);
-    }
-
-    /* 📱 Responsive para carrusel de mensajes */
-    @media (max-width: 600px) {
-      .message-card {
-        flex: 0 0 95%;
-        min-width: 280px;
-        height: 250px;
-        padding: 25px;
-      }
-      
-      .messages-carousel {
-        padding: 0 10px;
-      }
-      
-      .message-content p::before,
-      .message-content p::after{
-        font-size: 30px;
-      }
-    }
+/* 📱 Responsive para carrusel de mensajes */
+@media (max-width: 600px) {
+  .messages-carousel {
+    padding: 0; /* Elimina padding para que ocupe todo el ancho */
+  }
+  .messages-container {
+    height: 250px; /* Ajusta la altura para móviles */
+  }
+  .message-card {
+    padding: 25px; /* Ajusta el padding para móviles */
+  }
+  /* Ajusta el ancho para que la tarjeta ocupe más espacio visible en móviles */
+  .message-card {
+    flex: 0 0 100%; /* Sigue ocupando el 100% del contenedor en móviles */
+    min-width: unset; /* Reinicia el min-width */
+  }
+}

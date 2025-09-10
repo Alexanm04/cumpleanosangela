@@ -585,81 +585,112 @@ function setupVideoControls() {
 }
 
 // 💬 CARRUSEL DE MENSAJES
-let currentMessageIndex = 0;
-const totalMessages = 4;
+const messagesContainer = document.querySelector('.messages-container');
+const messageCards = document.querySelectorAll('.message-card');
+const carouselIndicators = document.querySelectorAll('.carousel-indicators .indicator');
+let currentMessageIndex = 0; // Inicializamos en 0
 
-function changeMessage(direction) {
-  const cards = document.querySelectorAll('.message-card');
-  const indicators = document.querySelectorAll('.indicator');
-  
-  // Remover clases actuales
-  cards[currentMessageIndex].classList.remove('active');
-  indicators[currentMessageIndex].classList.remove('active');
-  
-  // Calcular nuevo índice
-  currentMessageIndex += direction;
-  
-  // Hacer loop circular
-  if (currentMessageIndex >= totalMessages) {
-    currentMessageIndex = 0;
-  } else if (currentMessageIndex < 0) {
-    currentMessageIndex = totalMessages - 1;
+function updateCarouselIndicators() {
+    carouselIndicators.forEach((indicator, index) => {
+        if (index === currentMessageIndex) {
+            indicator.classList.add('active');
+        } else {
+            indicator.classList.remove('active');
+        }
+    });
+}
+
+function scrollToMessage(index) {
+    if (messagesContainer && messageCards[index]) {
+        messagesContainer.scrollLeft = messageCards[index].offsetLeft;
+        currentMessageIndex = index;
+        updateCarouselIndicators();
+        console.log(`➡️ Desplazado al mensaje. Índice: ${currentMessageIndex}`);
+    }
+}
+
+// Event Listener para detectar el desplazamiento manual del usuario
+messagesContainer.addEventListener('scroll', () => {
+    // Calculamos qué tarjeta está más cerca del centro o inicio
+    const scrollLeft = messagesContainer.scrollLeft;
+    const containerWidth = messagesContainer.clientWidth;
+
+    // Encontramos la tarjeta más visible
+    let closestIndex = 0;
+    let minDistance = Infinity;
+
+    messageCards.forEach((card, index) => {
+        const cardLeft = card.offsetLeft;
+        const distance = Math.abs(scrollLeft - cardLeft); // Distancia al inicio de la tarjeta
+        // Opcional: distancia al centro de la tarjeta si queremos un snap más "centrado"
+        // const distance = Math.abs(scrollLeft + containerWidth / 2 - (cardLeft + card.clientWidth / 2));
+
+        if (distance < minDistance) {
+            minDistance = distance;
+            closestIndex = index;
+        }
+    });
+
+    if (closestIndex !== currentMessageIndex) {
+        currentMessageIndex = closestIndex;
+        updateCarouselIndicators();
+        console.log(`↔️ Scroll detectado, mensaje actual: ${currentMessageIndex}`);
+    }
+});
+
+// Event Listeners para los indicadores
+carouselIndicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+        scrollToMessage(index);
+        // Opcional: Pausar auto-scroll si lo implementas
+    });
+});
+
+// ***** IMPORTANTE: Elimina por completo las funciones de auto-avance (autoplay) si ya no las quieres
+// Si decides mantener el auto-avance, el `startMessageAutoplay`
+// y `stopMessageAutoplay` tendrían que ser reescritos para llamar a `scrollToMessage(currentMessageIndex + 1)`.
+// Por ahora, asumo que quieres solo desplazamiento manual.
+
+// 🚀 Inicialización
+window.onload = function() {
+  console.log('Página cargada - Inicializando...');
+
+  // ... (tu código de inicialización existente para ruleta, spotify, countdown, surprise, efectos visuales)
+
+  // Inicializar el carrusel de mensajes
+  if (messageCards.length > 0) {
+      scrollToMessage(0); // Asegura que la primera tarjeta esté visible y el indicador activo al cargar
+      console.log('✅ Carrusel de mensajes inicializado para desplazamiento lateral.');
+  } else {
+      console.warn('No se encontraron tarjetas de mensaje para el carrusel de amigas.');
   }
-  
-  // Aplicar nuevas clases
-  setTimeout(() => {
-    cards[currentMessageIndex].classList.add('active');
-    indicators[currentMessageIndex].classList.add('active');
-  }, 50);
-  
-  console.log(`📝 Mensaje cambiado a índice: ${currentMessageIndex}`);
-}
 
-function goToMessage(index) {
-  if (index === currentMessageIndex) return;
-  
-  const cards = document.querySelectorAll('.message-card');
-  const indicators = document.querySelectorAll('.indicator');
-  
-  // Remover clases actuales
-  cards[currentMessageIndex].classList.remove('active');
-  indicators[currentMessageIndex].classList.remove('active');
-  
-  // Establecer nuevo índice
-  currentMessageIndex = index;
-  
-  // Aplicar nuevas clases
-  setTimeout(() => {
-    cards[currentMessageIndex].classList.add('active');
-    indicators[currentMessageIndex].classList.add('active');
-  }, 50);
-  
-  console.log(`🎯 Saltando directamente al mensaje: ${currentMessageIndex}`);
-}
+  // Event listeners para cerrar modals al hacer clic fuera
+  // ... (tu código existente)
 
-// Auto-avanzar el carrusel cada 8 segundos
-let messageInterval;
+  // Prevenir que el clic en el contenido del modal lo cierre
+  // ... (tu código existente)
 
-function startMessageAutoplay() {
-  messageInterval = setInterval(() => {
-    changeMessage(1);
-  }, 8000);
-}
+  // Event listener para la tecla ESC
+  // ... (tu código existente)
 
-function stopMessageAutoplay() {
-  if (messageInterval) {
-    clearInterval(messageInterval);
+  console.log('✅ Inicialización completa - Galerías personales listas');
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  // ... (tu código existente para la música de fondo)
+
+  // ** ELIMINA O COMENTA TODO EL BLOQUE DE INICIALIZACIÓN DEL CARRUSEL DE MENSAJES AL FINAL DE DOMContentLoaded **
+  // El carrusel ahora se inicializa en `window.onload` con `scrollToMessage(0);`
+  /*
+  if (cards.length > 0) {
+    updateCarousel(current); // Muestra la primera tarjeta y activa el primer indicador
+    console.log('✅ Carrusel de mensajes inicializado manualmente.');
+  } else {
+    console.warn('No se encontraron tarjetas de mensaje para el carrusel.');
   }
-}
-
-// Pausar autoplay cuando el usuario interactúa
-function pauseAutoplayOnInteraction() {
-  stopMessageAutoplay();
-  setTimeout(() => {
-    startMessageAutoplay();
-  }, 10000); // Reanudar después de 10 segundos sin interacción
-}
-
+  */
+});
 // 🎂 Cuenta atrás
 function startCountdown() {
   const countdown = document.getElementById("countdown");
@@ -1051,3 +1082,11 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     console.warn('No se encontraron tarjetas de mensaje para el carrusel.');
   }})
+
+  document.querySelectorAll('.hidden-author').forEach(el => {
+  el.addEventListener('click', () => {
+    el.textContent = "— " + el.dataset.author;
+    el.classList.remove('hidden-author');
+    el.classList.add('revealed');
+  });
+});
