@@ -787,6 +787,12 @@ document.addEventListener("DOMContentLoaded", () => {
     bg.muted = false;
     bg.removeAttribute("muted");
     
+    if (cards.length > 0) {
+    updateCarousel(current); // Muestra la primera tarjeta y activa el primer indicador
+    startMessageAutoplay(); // Inicia el auto-avance
+  } else {
+    console.warn('No se encontraron tarjetas de mensaje para el carrusel.');
+  }
     const playPromise = bg.play();
     if (playPromise !== undefined) {
       playPromise
@@ -877,49 +883,171 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Variables del carrusel de mensajes
 const cards = document.querySelectorAll('.message-card');
-  const indicators = document.querySelectorAll('.indicator');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  let current = 0;
+const indicators = document.querySelectorAll('.indicator');
+const prevBtn = document.getElementById('prevBtn'); // Asegúrate de que este botón existe en tu HTML
+const nextBtn = document.getElementById('nextBtn'); // Asegúrate de que este botón existe en tu HTML
+let current = 0; // Se inicializa en 0 para mostrar la primera carta al cargar
 
-  function updateCarousel(index) {
-    cards.forEach((card, i) => {
-      card.classList.remove('active', 'prev', 'next');
-      indicators[i].classList.remove('active');
-      if (i === index) {
-        card.classList.add('active');
-        indicators[i].classList.add('active');
-      } else if (i === (index - 1 + cards.length) % cards.length) {
-        card.classList.add('prev');
-      } else if (i === (index + 1) % cards.length) {
-        card.classList.add('next');
-      }
+function updateCarousel(index) {
+  cards.forEach((card, i) => {
+    card.classList.remove('active', 'prev', 'next');
+    indicators[i].classList.remove('active');
+    if (i === index) {
+      card.classList.add('active');
+      indicators[i].classList.add('active');
+    } else if (i === (index - 1 + cards.length) % cards.length) {
+      card.classList.add('prev');
+    } else if (i === (index + 1) % cards.length) {
+      card.classList.add('next');
+    }
+  });
+}
+
+// Event Listeners para botones y indicadores
+prevBtn.addEventListener('click', () => {
+  current = (current - 1 + cards.length) % cards.length;
+  updateCarousel(current);
+  console.log(`⬅️ Mensaje anterior. Índice: ${current}`);
+});
+
+nextBtn.addEventListener('click', () => {
+  current = (current + 1) % cards.length;
+  updateCarousel(current);
+  console.log(`➡️ Mensaje siguiente. Índice: ${current}`);
+});
+
+indicators.forEach((ind, i) => {
+  ind.addEventListener('click', () => {
+    if (i === current) return; // Si ya está activa, no hacer nada
+    current = i;
+    updateCarousel(current);
+    console.log(`🎯 Saltando al mensaje. Índice: ${current}`);
+  });
+});
+
+// Mostrar autor al hacer clic en la tarjeta (mantener lógica)
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    const author = card.querySelector('.message-author');
+    if (author) {
+      author.classList.toggle('hidden');
+    }
+  });
+});
+
+// ************************************************
+// ELIMINAMOS TODA LA LÓGICA DE AUTOPLAY Y MENSAJES
+// ************************************************
+// Se eliminan:
+// - let messageInterval;
+// - const autoplayDelay = 8000;
+// - function startMessageAutoplay() { ... }
+// - function stopMessageAutoplay() { ... }
+// ************************************************
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const bg = document.getElementById("background-music");
+  if (!bg) return;
+
+  bg.volume = 0.3;
+  let audioActivated = false;
+  let hasPlayed = false;
+
+  bg.play().catch(() => { /* está bien, solo precargando */ });
+
+  const activate = () => {
+    if (audioActivated || hasPlayed) return;
+
+    bg.muted = false;
+    bg.removeAttribute("muted");
+
+    const playPromise = bg.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          console.log("🎵 Música activada exitosamente");
+          audioActivated = true;
+          hasPlayed = true;
+          cleanup();
+        })
+        .catch(err => {
+          console.log("⚠️ No se pudo iniciar audio:", err.message);
+          setTimeout(() => {
+            if (!hasPlayed) {
+              bg.play().then(() => {
+                console.log("🎵 Música activada en segundo intento");
+                audioActivated = true;
+                hasPlayed = true;
+                cleanup();
+              }).catch(() => {});
+            }
+          }, 100);
+        });
+    }
+  };
+
+  const events = ["mousedown", "touchstart", "click", "keydown", "scroll", "wheel", "mousemove"];
+  const options = { once: true, passive: true, capture: true };
+
+  function cleanup(){
+    events.forEach(ev => {
+      window.removeEventListener(ev, activate, true);
+      document.removeEventListener(ev, activate, true);
     });
   }
 
-  prevBtn.addEventListener('click', () => {
-    current = (current - 1 + cards.length) % cards.length;
-    updateCarousel(current);
+  events.forEach(ev => {
+    window.addEventListener(ev, activate, options);
+    document.addEventListener(ev, activate, options);
   });
 
-  nextBtn.addEventListener('click', () => {
-    current = (current + 1) % cards.length;
-    updateCarousel(current);
+  let scrollAttempts = 0;
+  const scrollHandler = () => {
+    if (!audioActivated && !hasPlayed && scrollAttempts < 3) {
+      scrollAttempts++;
+      activate();
+    }
+  };
+
+  window.addEventListener('scroll', scrollHandler, { passive: true });
+  document.addEventListener('scroll', scrollHandler, { passive: true });
+
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      if (!audioActivated && !hasPlayed) {
+        activate();
+      }
+    }, 1000);
   });
 
-  indicators.forEach((ind, i) => {
-    ind.addEventListener('click', () => {
-      current = i;
-      updateCarousel(current);
-    });
+  bg.addEventListener('ended', () => {
+    console.log("🎵 Audio terminado - no se reiniciará");
+    hasPlayed = true;
   });
 
-  // Mostrar autor al hacer clic en la tarjeta
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      const author = card.querySelector('.message-author');
-      author.classList.toggle('hidden');
-    });
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && audioActivated && bg.paused && !hasPlayed) {
+      if (bg.currentTime < bg.duration) {
+        bg.play().catch(()=>{});
+      }
+    }
   });
 
+  bg.addEventListener("error", (e) => {
+    console.log("❌ Error de audio:", e.target.error);
+  });
+
+  bg.addEventListener("canplaythrough", () => {
+    console.log("📡 Audio listo para reproducir");
+  });
+
+  // **INICIALIZACIÓN DEL CARRUSEL DE MENSAJES (solo manual)**
+  if (cards.length > 0) {
+    updateCarousel(current); // Muestra la primera tarjeta y activa el primer indicador
+    console.log('✅ Carrusel de mensajes inicializado manualmente.');
+  } else {
+    console.warn('No se encontraron tarjetas de mensaje para el carrusel.');
+  }})

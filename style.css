@@ -946,10 +946,10 @@ header .banner-text {
     }
 
     .message-content p {
-      font-size: clamp(18px, 4vw, 24px);
+      font-size: clamp(16px, 3.5vw, 22px);
       font-weight: 500;
       color: #333;
-      margin: 0 0 30px 0;
+      margin: 0 0 20px 0;
       line-height: 1.5;
       font-style: italic;
       position: relative;
@@ -957,22 +957,22 @@ header .banner-text {
 
     .message-content p::before {
       content: '"';
-      font-size: 60px;
+      font-size: 50px;
       color: #ff6699;
       position: absolute;
-      top: -20px;
-      left: -10px;
+      top: -15px;
+      left: -5px;
       font-family: serif;
       opacity: 0.3;
     }
 
     .message-content p::after {
       content: '"';
-      font-size: 60px;
+      font-size: 50px;
       color: #ff6699;
       position: absolute;
-      bottom: -40px;
-      right: -10px;
+      bottom: -30px;
+      right: -5px;
       font-family: serif;
       opacity: 0.3;
     }
@@ -985,36 +985,6 @@ header .banner-text {
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-    }
-
-    .carousel-btn {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: none;
-      background: linear-gradient(135deg, #ff6699, #66ccff);
-      color: white;
-      font-size: 24px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      flex-shrink: 0;
-    }
-
-    .carousel-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(255, 102, 153, 0.4);
-    }
-
-    .carousel-btn:active {
-      transform: scale(0.95);
-    }
-
-    .carousel-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: scale(1);
     }
 
     .carousel-indicators {
@@ -1042,4 +1012,23 @@ header .banner-text {
     .indicator:hover:not(.active) {
       background: rgba(255, 102, 153, 0.6);
       transform: scale(1.1);
+    }
+
+    /* 📱 Responsive para carrusel de mensajes */
+    @media (max-width: 600px) {
+      .message-card {
+        flex: 0 0 95%;
+        min-width: 280px;
+        height: 250px;
+        padding: 25px;
+      }
+      
+      .messages-carousel {
+        padding: 0 10px;
+      }
+      
+      .message-content p::before,
+      .message-content p::after{
+        font-size: 30px;
+      }
     }
