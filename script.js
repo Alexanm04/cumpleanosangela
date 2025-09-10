@@ -877,3 +877,49 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+const cards = document.querySelectorAll('.message-card');
+  const indicators = document.querySelectorAll('.indicator');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let current = 0;
+
+  function updateCarousel(index) {
+    cards.forEach((card, i) => {
+      card.classList.remove('active', 'prev', 'next');
+      indicators[i].classList.remove('active');
+      if (i === index) {
+        card.classList.add('active');
+        indicators[i].classList.add('active');
+      } else if (i === (index - 1 + cards.length) % cards.length) {
+        card.classList.add('prev');
+      } else if (i === (index + 1) % cards.length) {
+        card.classList.add('next');
+      }
+    });
+  }
+
+  prevBtn.addEventListener('click', () => {
+    current = (current - 1 + cards.length) % cards.length;
+    updateCarousel(current);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    current = (current + 1) % cards.length;
+    updateCarousel(current);
+  });
+
+  indicators.forEach((ind, i) => {
+    ind.addEventListener('click', () => {
+      current = i;
+      updateCarousel(current);
+    });
+  });
+
+  // Mostrar autor al hacer clic en la tarjeta
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const author = card.querySelector('.message-author');
+      author.classList.toggle('hidden');
+    });
+  });
+

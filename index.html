@@ -159,51 +159,49 @@
   </div>
 
 <!-- Carrusel de mensajes -->
-  <section>
-    <h2>Lo que dicen tus amigas 💖</h2>
-    <div class="messages-carousel">
-      <button class="carousel-btn prev-btn" onclick="changeMessage(-1)">‹</button>
-      
-      <div class="messages-container">
-        <div class="message-card active" data-index="0">
-          <div class="message-content">
-            <p>"Eres la persona más increíble que conozco. Feliz cumple 🥳"</p>
-            <span class="message-author">- Ana 💕</span>
-          </div>
-        </div>
-        
-        <div class="message-card" data-index="1">
-          <div class="message-content">
-            <p>"Gracias por tantos momentos juntas. Eres especial"</p>
-            <span class="message-author">- Laura 🌸</span>
-          </div>
-        </div>
-        
-        <div class="message-card" data-index="2">
-          <div class="message-content">
-            <p>"Siempre serás nuestra alegría y luz en días grises"</p>
-            <span class="message-author">- Marta ✨</span>
-          </div>
-        </div>
-        
-        <div class="message-card" data-index="3">
-          <div class="message-content">
-            <p>"Una amiga como tú es un tesoro que se encuentra una vez en la vida"</p>
-            <span class="message-author">- Todo el grupo 💥</span>
-          </div>
+<section id="amigas">
+  <h2>💌 Lo que dicen tus amigas</h2>
+
+  <div class="messages-carousel">
+    <!-- Botón previo -->
+    <button class="carousel-btn" id="prevBtn">&#8249;</button>
+
+    <!-- Contenedor de mensajes -->
+    <div class="messages-container">
+      <div class="message-card active">
+        <div class="message-content">
+          <p>“¿Recuerdas cuando nos perdimos en la playa y terminamos cantando toda la noche? Nunca lo olvidaré.”</p>
+          <div class="message-author hidden">— Laura</div>
         </div>
       </div>
-      
-      <button class="carousel-btn next-btn" onclick="changeMessage(1)">›</button>
+
+      <div class="message-card">
+        <div class="message-content">
+          <p>“Ese viaje sorpresa fue lo mejor que he vivido contigo, reímos hasta que nos dolió la barriga.”</p>
+          <div class="message-author hidden">— Marta</div>
+        </div>
+      </div>
+
+      <div class="message-card">
+        <div class="message-content">
+          <p>“Aquella vez que me apoyaste en mi peor momento es lo que más valoro de nuestra amistad.”</p>
+          <div class="message-author hidden">— Ana</div>
+        </div>
+      </div>
     </div>
-    
-    <div class="carousel-indicators">
-      <span class="indicator active" onclick="goToMessage(0)"></span>
-      <span class="indicator" onclick="goToMessage(1)"></span>
-      <span class="indicator" onclick="goToMessage(2)"></span>
-      <span class="indicator" onclick="goToMessage(3)"></span>
-    </div>
-  </section>
+
+    <!-- Botón siguiente -->
+    <button class="carousel-btn" id="nextBtn">&#8250;</button>
+  </div>
+
+  <!-- Indicadores -->
+  <div class="carousel-indicators">
+    <div class="indicator active"></div>
+    <div class="indicator"></div>
+    <div class="indicator"></div>
+  </div>
+</section>
+
 
   <!-- Sorpresa Final -->
   <section>
