@@ -208,17 +208,53 @@
 </section>
 
 
-  <!-- Sorpresa Final -->
-  <section>
-    <h2>✨ Sorpresa Especial ✨</h2>
-    <button onclick="revealSurprise()">Desbloquear sorpresa 🎁</button>
-    <div id="surprise" class="hidden">
-      <h3>💖 Te quiero con todo mi corazón 💖</h3>
-      <video controls>
-        <source src="sorpresa.mp4" type="video/mp4">
-      </video>
+<!-- Sorpresa Final -->
+<section>
+  <h2>✨ Sorpresa Especial ✨</h2>
+  <button onclick="revealSurprise()">Desbloquear sorpresa 🎁</button>
+  <div id="surprise" class="hidden">
+
+    <!-- Nuevo Carrusel de Pistas -->
+    <!-- Carrusel de Pistas Simplificado -->
+<div id="giftHintsCarousel" class="gift-hints-carousel hidden">
+  <h3>🎁 ¡Pistas para tu Regalo! 🎁</h3>
+  
+  <div class="hints-container">
+    <div class="hint-card">
+      <img src="pista1.png" alt="Pista 1" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDIwMCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIxNTAiIGZpbGw9IiNmZjY2OTkiLz48dGV4dCB4PSIxMDAiIHk9Ijc1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QaXN0YSAxPC90ZXh0Pjwvc3ZnPg==';">
+      <p>🏛️ Pista 1: Es más de un objeto.</p>
     </div>
-  </section>
+    
+    <div class="hint-card">
+      <img src="pista2.jpg" alt="Pista 2" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDIwMCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIxNTAiIGZpbGw9IiM2NmNjZmYiLz48dGV4dCB4PSIxMDAiIHk9Ijc1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QaXN0YSAyPC90ZXh0Pjwvc3ZnPg==';">
+      <p>✈️ Pista 2: Los objetos son pequeños.</p>
+    </div>
+    
+    <div class="hint-card">
+      <img src="pista3.png" alt="Pista 3" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDIwMCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIxNTAiIGZpbGw9IiNmZmNjNjYiLz48dGV4dCB4PSIxMDAiIHk9Ijc1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QaXN0YSAzPC90ZXh0Pjwvc3ZnPg==';">
+      <p>🌟 Pista 3: Puedes utilizarlo en la playa, en una boda,en un viaje o incluso en tu graduación </p>
+    </div>
+
+    <div class="hint-card">
+      <img src="pista4.png" alt="Pista 3" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDIwMCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIxNTAiIGZpbGw9IiNmZmNjNjYiLz48dGV4dCB4PSIxMDAiIHk9Ijc1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QaXN0YSAzPC90ZXh0Pjwvc3ZnPg==';">
+      <p>🌟 Pista 4: Los recuerdos pueden ser efímeros, esto si lo cuidas no. </p>
+    </div>
+
+    <div class="hint-card">
+      <img src="pista 5.png" alt="Pista 3" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDIwMCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIxNTAiIGZpbGw9IiNmZmNjNjYiLz48dGV4dCB4PSIxMDAiIHk9Ijc1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QaXN0YSAzPC90ZXh0Pjwvc3ZnPg==';">
+      <p>🌟 Pista 5: Los sueños a veces se hacen realidad. </p>
+    </div>
+  </div>
+  
+  <div class="carousel-nav">
+    <button onclick="navigateHints(-1)">⬅️ Anterior</button>
+    <button onclick="navigateHints(1)">Siguiente ➡️</button>
+  </div>
+</div>
+    <!-- Fin del Carrusel de Pistas -->
+
+  </div>
+</section>
   <audio id="background-music" autoplay muted>
   <source src="felizcumpleanos.mp3" type="audio/mpeg">
 </audio>

@@ -741,8 +741,64 @@ function startCountdown() {
 }
 
 // ✨ Sorpresa final
+// Variables del carrusel de pistas (simplificado)
+let currentHintIndex = 0;
+let hintCards = [];
+
+// Función para inicializar el carrusel de pistas
+function initializeGiftHintCarousel() {
+  hintCards = document.querySelectorAll('#giftHintsCarousel .hint-card');
+  
+  if (hintCards.length === 0) {
+    console.warn('No se encontraron tarjetas de pistas');
+    return;
+  }
+  
+  currentHintIndex = 0;
+  showCurrentHint();
+  console.log('Carrusel de pistas inicializado con', hintCards.length, 'pistas');
+}
+
+// Función para mostrar la pista actual
+function showCurrentHint() {
+  // Ocultar todas las pistas
+  hintCards.forEach((card, index) => {
+    if (index === currentHintIndex) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+  
+  console.log('Mostrando pista', currentHintIndex + 1, 'de', hintCards.length);
+}
+
+// Función para navegar entre pistas
+function navigateHints(direction) {
+  if (hintCards.length === 0) return;
+  
+  if (direction === 1) { // Siguiente
+    currentHintIndex = (currentHintIndex + 1) % hintCards.length;
+  } else if (direction === -1) { // Anterior
+    currentHintIndex = (currentHintIndex - 1 + hintCards.length) % hintCards.length;
+  }
+  
+  showCurrentHint();
+}
+
+// Función para revelar sorpresa (actualizada)
 function revealSurprise() {
   document.getElementById("surprise").classList.remove("hidden");
+
+  const giftHintsCarousel = document.getElementById("giftHintsCarousel");
+  if (giftHintsCarousel) {
+    giftHintsCarousel.classList.remove("hidden");
+    
+    // Inicializar el carrusel después de que sea visible
+    setTimeout(() => {
+      initializeGiftHintCarousel();
+    }, 100);
+  }
 }
 
 // 🎊 Efectos visuales
@@ -1001,17 +1057,52 @@ cards.forEach(card => {
   });
 });
 
-// ************************************************
-// ELIMINAMOS TODA LA LÓGICA DE AUTOPLAY Y MENSAJES
-// ************************************************
-// Se eliminan:
-// - let messageInterval;
-// - const autoplayDelay = 8000;
-// - function startMessageAutoplay() { ... }
-// - function stopMessageAutoplay() { ... }
-// ************************************************
+/* Si el carrusel ya está visible al cargar (p. ej. pruebas), inicializamos */
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.getElementById('giftHintsCarousel');
+  if (carousel && !carousel.classList.contains('hidden')) {
+    setTimeout(initializeGiftHintCarousel, 50);
+  }
+});
 
+// ---------------- INICIALIZACIÓN ----------------
+window.onload = function() {
+  console.log('Página cargada - Inicializando...');
+  setupVideoControls();
+  startCountdown();
+  launchHearts();
+  setTimeout(launchConfetti, 2000);
+  setTimeout(launchBalloons, 4000);
 
+  // Carrusel de mensajes
+  if (messageCards.length > 0) scrollToMessage(0);
+
+  // Cerrar modals al hacer clic fuera
+  window.addEventListener('click', function(event) {
+    const modal = document.getElementById('personalGalleryModal');
+    const lightbox = document.getElementById('lightbox');
+    if (event.target === modal) closePersonGallery();
+    if (event.target === lightbox) closeLightbox();
+  });
+
+  // Evitar que el contenido cierre el modal
+  const modalContent = document.querySelector('.modal-content');
+  if (modalContent) {
+    modalContent.addEventListener('click', e => e.stopPropagation());
+  }
+
+  // Tecla ESC
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      if (document.getElementById('lightbox').style.display === 'block') closeLightbox();
+      else if (document.getElementById('personalGalleryModal').style.display === 'block') closePersonGallery();
+    }
+  });
+
+  console.log('✅ Inicialización completa');
+};
+
+// ---------------- AUDIO DE FONDO ----------------
 document.addEventListener("DOMContentLoaded", () => {
   const bg = document.getElementById("background-music");
   if (!bg) return;
@@ -1020,101 +1111,23 @@ document.addEventListener("DOMContentLoaded", () => {
   let audioActivated = false;
   let hasPlayed = false;
 
-  bg.play().catch(() => { /* está bien, solo precargando */ });
+  bg.play().catch(() => {});
 
   const activate = () => {
     if (audioActivated || hasPlayed) return;
-
     bg.muted = false;
     bg.removeAttribute("muted");
-
-    const playPromise = bg.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          console.log("🎵 Música activada exitosamente");
-          audioActivated = true;
-          hasPlayed = true;
-          cleanup();
-        })
-        .catch(err => {
-          console.log("⚠️ No se pudo iniciar audio:", err.message);
-          setTimeout(() => {
-            if (!hasPlayed) {
-              bg.play().then(() => {
-                console.log("🎵 Música activada en segundo intento");
-                audioActivated = true;
-                hasPlayed = true;
-                cleanup();
-              }).catch(() => {});
-            }
-          }, 100);
-        });
-    }
+    bg.play().then(() => {
+      audioActivated = true;
+      hasPlayed = true;
+      cleanup();
+    }).catch(() => {});
   };
 
-  const events = ["mousedown", "touchstart", "click", "keydown", "scroll", "wheel", "mousemove"];
+  const events = ["mousedown","touchstart","click","keydown","scroll","wheel","mousemove"];
   const options = { once: true, passive: true, capture: true };
+  function cleanup(){ events.forEach(ev => { window.removeEventListener(ev, activate, true); document.removeEventListener(ev, activate, true); }); }
+  events.forEach(ev => { window.addEventListener(ev, activate, options); document.addEventListener(ev, activate, options); });
 
-  function cleanup(){
-    events.forEach(ev => {
-      window.removeEventListener(ev, activate, true);
-      document.removeEventListener(ev, activate, true);
-    });
-  }
-
-  events.forEach(ev => {
-    window.addEventListener(ev, activate, options);
-    document.addEventListener(ev, activate, options);
-  });
-
-  let scrollAttempts = 0;
-  const scrollHandler = () => {
-    if (!audioActivated && !hasPlayed && scrollAttempts < 3) {
-      scrollAttempts++;
-      activate();
-    }
-  };
-
-  window.addEventListener('scroll', scrollHandler, { passive: true });
-  document.addEventListener('scroll', scrollHandler, { passive: true });
-
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      if (!audioActivated && !hasPlayed) {
-        activate();
-      }
-    }, 1000);
-  });
-
-  bg.addEventListener('ended', () => {
-    console.log("🎵 Audio terminado - no se reiniciará");
-    hasPlayed = true;
-  });
-
-  document.addEventListener("visibilitychange", () => {
-    if (!document.hidden && audioActivated && bg.paused && !hasPlayed) {
-      if (bg.currentTime < bg.duration) {
-        bg.play().catch(()=>{});
-      }
-    }
-  });
-
-  
-  bg.addEventListener("error", (e) => {
-    console.log("❌ Error de audio:", e.target.error);
-  });
-
-  bg.addEventListener("canplaythrough", () => {
-    console.log("📡 Audio listo para reproducir");
-  });
-
-  // **INICIALIZACIÓN DEL CARRUSEL DE MENSAJES (solo manual)**
-  if (cards.length > 0) {
-    updateCarousel(current); // Muestra la primera tarjeta y activa el primer indicador
-    console.log('✅ Carrusel de mensajes inicializado manualmente.');
-  } else {
-    console.warn('No se encontraron tarjetas de mensaje para el carrusel.');
-  }})
-
- 
+  bg.addEventListener('ended', () => { hasPlayed = true; });
+});
