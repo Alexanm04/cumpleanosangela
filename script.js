@@ -191,6 +191,13 @@ function startCarouselAnimation() {
   setTimeout(animateStep, speed);
 }
 
+ document.querySelectorAll('.hidden-author').forEach(el => {
+  el.addEventListener('click', () => {
+    el.textContent = "— " + el.dataset.author;
+    el.classList.remove('hidden-author');
+    el.classList.add('revealed');
+  });
+});
 function finishCarousel(finalIndex) {
   const selectedVideo = videos[finalIndex];
   
@@ -1067,6 +1074,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  
   bg.addEventListener("error", (e) => {
     console.log("❌ Error de audio:", e.target.error);
   });
@@ -1083,10 +1091,4 @@ document.addEventListener("DOMContentLoaded", () => {
     console.warn('No se encontraron tarjetas de mensaje para el carrusel.');
   }})
 
-  document.querySelectorAll('.hidden-author').forEach(el => {
-  el.addEventListener('click', () => {
-    el.textContent = "— " + el.dataset.author;
-    el.classList.remove('hidden-author');
-    el.classList.add('revealed');
-  });
-});
+ 

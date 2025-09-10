@@ -918,32 +918,62 @@ header .banner-text {
 }
 
 .message-card {
-  flex: 0 0 100%; /* Cada tarjeta ocupa el 100% del ancho del contenedor visible */
-  scroll-snap-align: center; /* Alinea la tarjeta al centro al hacer scroll */
-  width: 100%; /* Asegura que la tarjeta tome su ancho */
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
-  /* Eliminamos las propiedades de opacidad y transform de aquí, ya no son necesarias para el scroll */
-  transition: none; /* No necesitamos transición de transform ya que el scroll lo manejará */
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 250px;
+  max-width: 300px;
+  flex-shrink: 0;
 }
 
-/* Las clases active, prev, next ya no son necesarias para el desplazamiento principal,
-   pero podemos mantener 'active' para los indicadores si queremos resaltar la tarjeta actual. */
-.message-card.active {
-  /* No se necesita ninguna transformación aquí para el desplazamiento */
-  /* Podríamos añadir un pequeño efecto visual si se desea, por ejemplo: */
-  /* box-shadow: 0 0 20px rgba(255, 102, 153, 0.4); */
+.message-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
-.hidden-author {
-  cursor: pointer;
-  color: #999;
+
+.message-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
   font-style: italic;
+  text-align: left;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 15px;
+}
+
+.message-content p::before {
+  content: "❝";
+  font-size: 24px;
+  color: #ff6699;
+  position: absolute;
+  left: 0;
+  top: -5px;
+}
+
+.message-content p::after {
+  content: "❞";
+  font-size: 24px;
+  color: #ff6699;
+  margin-left: 5px;
+}
+
+.message-author,
+.hidden-author {
+  text-align: right;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ff6699;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.message-author:hover,
+.hidden-author:hover {
+  color: #ff3366;
 }
 
 .revealed {
