@@ -26,7 +26,7 @@ header .banner-text {
   position: absolute;
   z-index: 2;
   top: 70%;                         /* lo bajas un poco */
-  left: 50%;                        /* centrado horizontal */
+  left: 30%;                        /* centrado horizontal */
   transform: translate(-50%, -50%); /* centra en ambos ejes */
   color: white;
   text-align: center;
@@ -1124,5 +1124,294 @@ header .banner-text {
   .carousel-nav button {
     width: 100%;
     min-width: unset;
+  }
+}
+
+/* 🌟 MEJORAS ADICIONALES PARA LA PÁGINA DE CUMPLEAÑOS */
+
+/* ✨ Estrellas brillantes de fondo */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* 🎨 Gradiente animado más vibrante para el body */
+body {
+  background: linear-gradient(-45deg, #ff6b9d, #c44569, #f8b500, #40e0d0, #ee5a52, #833ab4);
+  background-size: 400% 400%;
+  animation: gradientShift 45s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 🌸 Partículas flotantes decorativas */
+.floating-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: floatUp 8s infinite linear;
+  opacity: 0.7;
+}
+
+.particle:nth-child(odd) {
+  background: rgba(255, 107, 157, 0.6);
+  animation-delay: -2s;
+}
+
+.particle:nth-child(even) {
+  background: rgba(64, 224, 208, 0.6);
+  animation-delay: -4s;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-20vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 💖 Bordes brillantes para secciones */
+section {
+  position: relative;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff6b9d, #40e0d0, #f8b500, #c44569);
+  border-radius: 15px;
+  z-index: -1;
+  background-size: 300% 300%;
+  animation: borderGlow 6s ease infinite;
+  opacity: 0.3;
+}
+
+@keyframes borderGlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* 🎪 Texto del header con efecto neón */
+.banner-text {
+  text-shadow: 
+    0 0 5px rgba(255, 255, 255, 0.8),
+    0 0 10px rgba(255, 107, 157, 0.6),
+    0 0 15px rgba(255, 107, 157, 0.4),
+    0 0 20px rgba(255, 107, 157, 0.2);
+  animation: textGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  from {
+    text-shadow: 
+      0 0 5px rgba(255, 255, 255, 0.8),
+      0 0 10px rgba(255, 107, 157, 0.6),
+      0 0 15px rgba(255, 107, 157, 0.4),
+      0 0 20px rgba(255, 107, 157, 0.2);
+  }
+  to {
+    text-shadow: 
+      0 0 10px rgba(255, 255, 255, 1),
+      0 0 20px rgba(255, 107, 157, 0.8),
+      0 0 30px rgba(255, 107, 157, 0.6),
+      0 0 40px rgba(255, 107, 157, 0.4);
+  }
+}
+
+/* 🎭 Hover effects mejorados para botones */
+button {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* 🌈 Tarjetas de persona con glassmorphism */
+.person-card {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.person-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+  border-radius: 15px;
+  pointer-events: none;
+}
+
+/* 💫 Efecto de respiración para elementos importantes */
+.breathing {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* 🎨 Mensaje cards con colores únicos */
+.message-card:nth-child(1) { border-left: 5px solid #ff6b9d; }
+.message-card:nth-child(2) { border-left: 5px solid #40e0d0; }
+.message-card:nth-child(3) { border-left: 5px solid #f8b500; }
+.message-card:nth-child(4) { border-left: 5px solid #c44569; }
+
+/* 🏮 Indicadores del carrusel mejorados */
+.carousel-indicators .indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  margin: 0 8px;
+  cursor: pointer;
+  position: relative;
+}
+
+.carousel-indicators .indicator.active {
+  background: #ff6b9d;
+  box-shadow: 0 0 20px rgba(255, 107, 157, 0.6);
+}
+
+
+
+
+/* 🎪 Sección Spotify con efecto holográfico */
+.spotify-section {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.spotify-section::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: conic-gradient(from 0deg, #ff6b9d, #40e0d0, #f8b500, #c44569, #ff6b9d);
+  border-radius: 17px;
+  z-index: -1;
+  animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 🌟 Efectos de scroll reveal */
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  animation: slideInFromBottom 0.8s ease-out;
+}
+
+/* 📱 Mejoras responsive */
+@media (max-width: 600px) {
+  .particle {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .banner-text {
+    font-size: clamp(16px, 5vw, 24px);
+    padding: 8px 12px;
+  }
+  
+  section::before {
+    border-radius: 12px;
   }
 }

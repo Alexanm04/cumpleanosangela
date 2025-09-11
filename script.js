@@ -488,18 +488,7 @@ function toggleSpotifySize() {
   const spotifySection = document.getElementById('spotifySection');
   const iframe = document.getElementById('spotify-player');
   
-  if (!isSpotifyMinimized) {
-    spotifySection.style.position = 'fixed';
-    spotifySection.style.bottom = '20px';
-    spotifySection.style.right = '20px';
-    spotifySection.style.maxWidth = '300px';
-    spotifySection.style.zIndex = '1000';
-    spotifySection.style.transform = 'scale(0.8)';
-    spotifySection.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-    iframe.style.height = '80px';
-    isSpotifyMinimized = true;
-    console.log('Spotify minimizado');
-  } else {
+  
     spotifySection.style.position = 'relative';
     spotifySection.style.bottom = 'auto';
     spotifySection.style.right = 'auto';
@@ -510,58 +499,18 @@ function toggleSpotifySize() {
     iframe.style.height = '152px';
     isSpotifyMinimized = false;
     console.log('Spotify maximizado');
-  }
+  
 }
 
 function scrollToSpotify() {
   const spotifySection = document.getElementById('spotifySection');
-  
-  if (isSpotifyMinimized) {
-    toggleSpotifySize();
-    setTimeout(() => {
-      spotifySection.scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'center' 
-      });
-    }, 100);
-  } else {
     spotifySection.scrollIntoView({ 
       behavior: 'smooth', 
       block: 'center' 
     });
-  }
+  
 }
 
-function showSpotifyMessage() {
-  let message = document.getElementById('spotify-message');
-  if (!message) {
-    message = document.createElement('div');
-    message.id = 'spotify-message';
-    message.style.cssText = `
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.8);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 20px;
-      z-index: 9999;
-      font-size: 14px;
-      text-align: center;
-      max-width: 90%;
-      transition: opacity 0.3s ease;
-    `;
-    message.innerHTML = '🎵 Para pausar Spotify, haz clic en el reproductor minimizado ⬇️';
-    document.body.appendChild(message);
-  }
-  message.style.display = 'block';
-  message.style.opacity = '1';
-  
-  setTimeout(() => {
-    hideSpotifyMessage();
-  }, 4000);
-}
 
 function hideSpotifyMessage() {
   const message = document.getElementById('spotify-message');
@@ -582,7 +531,6 @@ function setupVideoControls() {
         toggleSpotifySize();
         console.log('Video iniciado - Spotify auto-minimizado');
       }
-      showSpotifyMessage();
     });
 
     video.addEventListener('pause', () => {
@@ -653,6 +601,276 @@ carouselIndicators.forEach((indicator, index) => {
     });
 });
 
+function setupSpotifyDetection() {
+  const spotifyIframe = document.getElementById("spotify-player");
+  const backgroundMusic = document.getElementById("background-music");
+
+  if (!spotifyIframe || !backgroundMusic) {
+    console.warn("⚠️ Spotify o música de fondo no encontrados");
+    return;
+  }
+
+  // Cuando el usuario hace clic dentro del iframe (inicia canción en Spotify)
+  spotifyIframe.addEventListener("mouseenter", () => {
+    if (!backgroundMusic.paused) {
+      backgroundMusic.pause();
+      console.log("⏸️ Fondo pausado por Spotify");
+    }
+  });
+
+  // Cuando el usuario mueve el ratón fuera del iframe (posible pausa en Spotify)
+  spotifyIframe.addEventListener("mouseleave", () => {
+    if (backgroundMusic.paused) {
+      backgroundMusic.play().catch(err => {
+        console.log("⚠️ No se pudo reanudar música:", err.message);
+      });
+      console.log("▶️ Fondo reanudado al salir de Spotify");
+    }
+  });
+}
+// 🌟 EFECTOS DECORATIVOS ADICIONALES PARA LA PÁGINA
+
+// ✨ Crear estrellas brillantes
+function createStars() {
+  const starsContainer = document.createElement('div');
+  starsContainer.className = 'stars';
+  document.body.appendChild(starsContainer);
+
+  for (let i = 0; i < 100; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 3 + 's';
+    star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+    starsContainer.appendChild(star);
+  }
+}
+
+// 🌸 Crear partículas flotantes
+function createFloatingParticles() {
+  const particlesContainer = document.createElement('div');
+  particlesContainer.className = 'floating-particles';
+  document.body.appendChild(particlesContainer);
+
+  setInterval(() => {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+    particlesContainer.appendChild(particle);
+
+    // Remover partícula después de la animación
+    setTimeout(() => {
+      if (particle.parentNode) {
+        particle.parentNode.removeChild(particle);
+      }
+    }, 10000);
+  }, 300);
+}
+
+// 🎭 Efectos de hover mejorados para tarjetas
+function enhanceCardEffects() {
+  const cards = document.querySelectorAll('.person-card, .message-card');
+  
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-8px) scale(1.02)';
+      this.style.boxShadow = '0 15px 40px rgba(0,0,0,0.2)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0) scale(1)';
+      this.style.boxShadow = '0 6px 20px rgba(0,0,0,0.1)';
+    });
+  });
+}
+
+// 🌈 Cambiar colores del gradiente dinámicamente
+function dynamicColorShift() {
+  const colors = [
+    ['#ff6b9d', '#c44569', '#f8b500', '#40e0d0'],
+    ['#667eea', '#764ba2', '#f093fb', '#f5576c'],
+    ['#4facfe', '#00f2fe', '#43e97b', '#38f9d7'],
+    ['#fa709a', '#fee140', '#a8edea', '#fed6e3']
+  ];
+  
+  let currentColorSet = 0;
+  
+  setInterval(() => {
+    currentColorSet = (currentColorSet + 1) % colors.length;
+    const colorSet = colors[currentColorSet];
+    
+    document.body.style.background = 
+      `linear-gradient(-45deg, ${colorSet[0]}, ${colorSet[1]}, ${colorSet[2]}, ${colorSet[3]})`;
+    document.body.style.backgroundSize = '400% 400%';
+  }, 60000); // Cambiar cada 20 segundos
+}
+
+// 💫 Efecto de respiración para elementos importantes
+function addBreathingEffect() {
+  const importantElements = document.querySelectorAll('h1, h2, .banner-text');
+  
+  importantElements.forEach(element => {
+    element.classList.add('breathing');
+  });
+}
+
+
+
+// 🎵 Visualizador de audio simple (simulado)
+function createAudioVisualizer() {
+  const visualizer = document.createElement('div');
+  visualizer.style.position = 'fixed';
+  visualizer.style.bottom = '20px';
+  visualizer.style.right = '20px';
+  visualizer.style.display = 'flex';
+  visualizer.style.alignItems = 'end';
+  visualizer.style.height = '50px';
+  visualizer.style.gap = '2px';
+  visualizer.style.zIndex = '1000';
+  visualizer.style.opacity = '0.7';
+  
+  for (let i = 0; i < 12; i++) {
+    const bar = document.createElement('div');
+    bar.style.width = '3px';
+    bar.style.height = '10px';
+    bar.style.background = 'linear-gradient(to top, #ff6b9d, #40e0d0)';
+    bar.style.borderRadius = '2px';
+    bar.style.transition = 'height 0.1s ease';
+    visualizer.appendChild(bar);
+  }
+  
+  document.body.appendChild(visualizer);
+  
+  // Simular movimiento de barras
+  setInterval(() => {
+    const bars = visualizer.children;
+    for (let i = 0; i < bars.length; i++) {
+      const height = Math.random() * 40 + 10;
+      bars[i].style.height = height + 'px';
+    }
+  }, 200);
+}
+
+// 🎊 Lluvia de emoji aleatorios
+function createEmojiRain() {
+  const emojis = ['🎉', '🎂', '🎈', '🎁', '💕', '✨', '🌟', '🎊', '💖', '🎀'];
+  
+  setInterval(() => {
+    const emoji = document.createElement('div');
+    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    emoji.style.position = 'fixed';
+    emoji.style.top = '-50px';
+    emoji.style.left = Math.random() * window.innerWidth + 'px';
+    emoji.style.fontSize = (Math.random() * 20 + 15) + 'px';
+    emoji.style.zIndex = '1';
+    emoji.style.pointerEvents = 'none';
+    emoji.style.animation = 'fall 4s linear forwards';
+    
+    document.body.appendChild(emoji);
+    
+    setTimeout(() => {
+      if (emoji.parentNode) {
+        emoji.parentNode.removeChild(emoji);
+      }
+    }, 4000);
+  }, 2000);
+}
+
+// 🎨 Efecto de ondas en clics
+function createClickRipples() {
+  document.addEventListener('click', (e) => {
+    const ripple = document.createElement('div');
+    ripple.style.position = 'fixed';
+    ripple.style.left = e.clientX + 'px';
+    ripple.style.top = e.clientY + 'px';
+    ripple.style.width = '0';
+    ripple.style.height = '0';
+    ripple.style.borderRadius = '50%';
+    ripple.style.background = 'radial-gradient(circle, rgba(255,107,157,0.4) 0%, transparent 70%)';
+    ripple.style.transform = 'translate(-50%, -50%)';
+    ripple.style.animation = 'rippleEffect 0.6s ease-out';
+    ripple.style.pointerEvents = 'none';
+    ripple.style.zIndex = '9999';
+    
+    document.body.appendChild(ripple);
+    
+    setTimeout(() => {
+      if (ripple.parentNode) {
+        ripple.parentNode.removeChild(ripple);
+      }
+    }, 600);
+  });
+}
+
+// 📱 Detección de dispositivo para efectos optimizados
+function isMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// 🚀 Inicializar todos los efectos decorativos
+function initializeDecorativeEffects() {
+  console.log('🎨 Inicializando efectos decorativos...');
+  
+  // Efectos básicos para todos los dispositivos
+  createStars();
+  enhanceCardEffects();
+  addBreathingEffect();
+  createClickRipples();
+  dynamicColorShift();
+  
+  // Efectos adicionales solo para dispositivos con buena performance
+  if (!isMobile()) {
+    createFloatingParticles();
+    createCursorTrail();
+    createAudioVisualizer();
+  }
+  
+  // Efecto de lluvia de emojis para ocasiones especiales
+  createEmojiRain();
+  
+  console.log('✨ Efectos decorativos cargados exitosamente');
+}
+
+// CSS adicional para las animaciones
+const additionalCSS = `
+  @keyframes rippleEffect {
+    from {
+      width: 0;
+      height: 0;
+      opacity: 0.8;
+    }
+    to {
+      width: 100px;
+      height: 100px;
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fall {
+    from {
+      transform: translateY(-50px) rotate(0deg);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+`;
+
+// Inyectar CSS adicional
+const styleSheet = document.createElement('style');
+styleSheet.textContent = additionalCSS;
+document.head.appendChild(styleSheet);
+
+// Auto-inicializar cuando el DOM esté listo
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeDecorativeEffects);
+} else {
+  initializeDecorativeEffects();
+}
 // ***** IMPORTANTE: Elimina por completo las funciones de auto-avance (autoplay) si ya no las quieres
 // Si decides mantener el auto-avance, el `startMessageAutoplay`
 // y `stopMessageAutoplay` tendrían que ser reescritos para llamar a `scrollToMessage(currentMessageIndex + 1)`.
@@ -661,7 +879,59 @@ carouselIndicators.forEach((indicator, index) => {
 // 🚀 Inicialización
 window.onload = function() {
   console.log('Página cargada - Inicializando...');
-
+  // Configurar la referencia a la música de fondo
+  backgroundMusic = document.getElementById("background-music");
+  
+  // Verificar elementos de la ruleta
+  const roulette = document.getElementById("videoRoulette");
+  const startBtn = document.getElementById("startRouletteBtn");
+  const wheel = document.getElementById("rouletteWheel");
+  if (!roulette || !startBtn || !wheel) {
+    console.error('Elementos de la ruleta no encontrados');
+    return;
+  }
+  
+  // Inicializar controles y efectos
+  setupVideoControls();
+  setupSpotifyDetection(); // Nueva función para detectar Spotify
+  startCountdown();
+  launchHearts();
+  // Efectos especiales
+  setTimeout(launchConfetti, 2000);
+  setTimeout(launchBalloons, 4000);
+  
+  // Event listeners para cerrar modals al hacer clic fuera
+  window.addEventListener('click', function(event) {
+    const modal = document.getElementById('personalGalleryModal');
+    const lightbox = document.getElementById('lightbox');
+    
+    if (event.target === modal) {
+      closePersonGallery();
+    }
+    
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+  
+  // Prevenir que el clic en el contenido del modal lo cierre
+  const modalContent = document.querySelector('.modal-content');
+  if (modalContent) {
+    modalContent.addEventListener('click', function(event) {
+      event.stopPropagation();
+    });
+  }
+  
+  // Event listener para la tecla ESC
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      if (document.getElementById('lightbox').style.display === 'block') {
+        closeLightbox();
+      } else if (document.getElementById('personalGalleryModal').style.display === 'block') {
+        closePersonGallery();
+      }
+    }
+  })
   // ... (tu código de inicialización existente para ruleta, spotify, countdown, surprise, efectos visuales)
 
   // Inicializar el carrusel de mensajes
