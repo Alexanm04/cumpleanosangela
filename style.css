@@ -24,10 +24,12 @@ header .banner-img {
 
 header .banner-text {
   position: absolute;
-  z-index: 2;
-  top: 70%;
-  left: 50%;                        /* Centrado horizontal */
-  transform: translate(-50%, -50%); /* Centrar en ambos ejes */
+  top: 60%;                  /* centrado vertical */
+  left: 0;                   /* desde el borde izquierdo */
+  right: 0;                  /* hasta el borde derecho */
+  margin: auto;              /* centra horizontalmente */
+  transform: translateY(-50%); /* solo mueve en vertical */
+  
   color: white;
   text-align: center;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
@@ -36,11 +38,14 @@ header .banner-text {
   background: rgba(0,0,0,0.4);
   padding: 5px 15px;
   border-radius: 12px;
-  display: block;
-  width: 90%;
   max-width: 600px;
+  width: fit-content;        /* ajusta al texto */
   box-sizing: border-box;
+  z-index: 10;
 }
+
+
+
 
 
 
