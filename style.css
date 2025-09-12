@@ -1399,19 +1399,19 @@ section {
   animation: slideInFromBottom 0.8s ease-out;
 }
 
-/* 📱 Mejoras responsive */
+/* 📱 Mejoras responsive
 @media (max-width: 600px) {
   .particle {
     width: 6px;
     height: 6px;
   }
-  
-  .banner-text {
+   */
+  /* .banner-text {
     font-size: clamp(16px, 5vw, 24px);
     padding: 8px 12px;
-  }
+  } */
   
-  section::before {
+  /* section::before {
     border-radius: 12px;
   }
-}
+} */
