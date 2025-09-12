@@ -42,35 +42,6 @@ header .banner-text {
   box-sizing: border-box;
 }
 
-/* Ajuste específico para tablets */
-@media (max-width: 768px) {
-  header .banner-text {
-    left: 50%;
-    width: 85%;
-    font-size: clamp(16px, 5.5vw, 26px);
-  }
-}
-
-/* Ajuste específico para móviles */
-@media (max-width: 600px) {
-  header .banner-text {
-    left: 50%;
-    width: 80%;
-    font-size: clamp(14px, 5vw, 22px);
-    padding: 8px 12px;
-    top: 65%; /* Ajustar posición vertical si es necesario */
-  }
-}
-
-/* Para pantallas muy pequeñas */
-@media (max-width: 400px) {
-  header .banner-text {
-    left: 50%;
-    width: 75%;
-    font-size: clamp(12px, 4.5vw, 18px);
-    padding: 6px 10px;
-  }
-}
 
 
 
