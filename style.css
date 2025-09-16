@@ -67,30 +67,65 @@ header .banner-text {
     }
 
     /* 🎵 Spotify Player */
-    .spotify-section {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 15px;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 400px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-    }
+/* 🎵 Playlist YouTube */
+.spotify-section {
+  background: linear-gradient(135deg, #ff6b9d, #ffcc70);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 40px auto;
+  max-width: 650px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    #spotify-player {
-      width: 100%;
-      height: 152px;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-    }
+.spotify-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+}
 
-    .spotify-controls {
-      margin-top: 10px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+.spotify-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+/* Player responsivo */
+.spotify-section iframe {
+  width: 100%;
+  height: 360px;
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Botón para ver la playlist */
+.spotify-section a {
+  display: inline-block;
+  margin-top: 20px;
+  background: #fff;
+  color: #ff6b9d;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.spotify-section a:hover {
+  background: #ff6b9d;
+  color: #fff;
+  box-shadow: 0 5px 20px rgba(255, 107, 157, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .spotify-section iframe {
+    height: 220px;
+  }
+}
+
 
     .control-btn {
       padding: 8px 16px;
