@@ -71,8 +71,8 @@ header .banner-text {
   background: linear-gradient(135deg, #ff6b9d, #ffcc70);
   border-radius: 20px;
   padding: 25px;
-  margin: 40px auto;
-  max-width: 650px;
+  margin: 80px auto;
+  max-width: 850px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.25);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
