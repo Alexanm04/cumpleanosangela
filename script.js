@@ -22,14 +22,26 @@ const videos = [
 
 // 📸 CONFIGURACIÓN DE GALERÍAS PERSONALES
 const personalGalleries = {
-  ana: {
-    name: "Ana 💕",
+  alejandra: {
+    name: "Alejandra 💕",
     photos: [
-      { src: "ana/foto1.jpg", caption: "Nuestra primera aventura juntas ✨" },
-      { src: "ana/foto2.jpg", caption: "Ese día que no paramos de reír 😂" },
-      { src: "ana/foto3.jpg", caption: "Siempre serás mi persona favorita 💖" },
-      { src: "ana/foto4.jpg", caption: "Recuerdos que atesoro para siempre 🌟" },
-      { src: "ana/foto5.jpg", caption: "¡Feliz cumpleaños, bestie! 🎂" }
+      { src: "alejandra/a1.jpeg", caption: "Nuestra primera aventura juntas ✨" },
+      { src: "alejandra/a2.jpeg", caption: "Ese día que no paramos de reír 😂" },
+      { src: "alejandra/a3.jpeg", caption: "Siempre serás mi persona favorita 💖" },
+      { src: "alejandra/a4.jpeg", caption: "Recuerdos que atesoro para siempre 🌟" },
+      { src: "alejandra/a5.jpeg", caption: "¡Feliz cumpleaños, bestie! 🎂" },
+      { src: "alejandra/a6.jpeg", caption: "Siempre serás mi persona favorita 💖" },
+      { src: "alejandra/a7.jpeg", caption: "Recuerdos que atesoro para siempre 🌟" },
+      { src: "alejandra/a8.jpg", caption: "¡Feliz cumpleaños, bestie! 🎂" },
+      { src: "alejandra/a9.jpg", caption: "Siempre serás mi persona favorita 💖" },
+      { src: "alejandra/a10.jpg", caption: "Recuerdos que atesoro para siempre 🌟" },
+      { src: "alejandra/a11.jpeg", caption: "¡Feliz cumpleaños, bestie! 🎂" },
+      { src: "alejandra/a12.jpg", caption: "¡Feliz cumpleaños, bestie! 🎂" },
+      { src: "alejandra/a13.jpg", caption: "Siempre serás mi persona favorita 💖" },
+      { src: "alejandra/a14.jpg", caption: "Recuerdos que atesoro para siempre 🌟" },
+      { src: "alejandra/a15.jpg", caption: "¡Feliz cumpleaños, bestie! 🎂" },
+      { src: "alejandra/a16.jpg", caption: "¡Feliz cumpleaños, bestie! 🎂" }
+      
     ],
     videos: [
       { src: "ana/video1.mp4", caption: "Mensaje especial de cumpleaños 💕", thumbnail: "ana/video1_thumb.jpg" },
