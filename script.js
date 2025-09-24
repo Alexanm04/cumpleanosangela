@@ -48,17 +48,18 @@ const personalGalleries = {
       { src: "ana/video2.mp4", caption: "Recordando momentos divertidos 🎉", thumbnail: "ana/video2_thumb.jpg" }
     ]
   },
-  laura: {
-    name: "Laura 🌸",
+  fabiola: {
+    name: "Fabiola 🌸",
     photos: [
-      { src: "laura/foto1.jpg", caption: "Nuestros días de aventura 🌈" },
-      { src: "laura/foto2.jpg", caption: "Siempre juntas en las buenas y malas 💪" },
-      { src: "laura/foto3.jpg", caption: "Momentos que no tienen precio 💎" },
-      { src: "laura/foto4.jpg", caption: "Mi compañera de vida 👭" },
-      { src: "laura/foto5.jpg", caption: "Eres increíble, nunca cambies ✨" },
-      { src: "laura/foto6.jpg", caption: "Gracias por tantos momentos 🙏" },
-      { src: "laura/foto7.jpg", caption: "¡Que cumplas muchos más! 🎊" },
-      { src: "laura/foto8.jpg", caption: "Con amor, tu amiga Laura 💕" }
+      { src: "fabiola/f1.jpg", caption: "Nuestros días de aventura 🌈" },
+      { src: "fabiola/f2.jpg", caption: "Siempre juntas en las buenas y malas 💪" },
+      { src: "fabiola/f3.jpg", caption: "Momentos que no tienen precio 💎" },
+      { src: "fabiola/f4.jpg", caption: "Mi compañera de vida 👭" },
+      { src: "fabiola/f5.jpg", caption: "Eres increíble, nunca cambies ✨" },
+      { src: "fabiola/f6.jpg", caption: "Gracias por tantos momentos 🙏" },
+      { src: "fabiola/f7.jpg", caption: "¡Que cumplas muchos más! 🎊" },
+      { src: "fabiola/f8.jpg", caption: "Con amor, tu amiga Laura 💕" },
+      { src: "fabiola/f9.jpg", caption: "Con amor, tu amiga Laura 💕" }
     ],
     videos: [
       { src: "laura/video1.mp4", caption: "Felicitación especial 🎂", thumbnail: "laura/video1_thumb.jpg" },
