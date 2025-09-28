@@ -1,21 +1,21 @@
 // 🎥 Configuración de videos con información completa
 const videos = [
   { 
-    src: "video11.mp4", 
-    title: "Mensaje de Ana 💕", 
-    thumbnail: "jul725.png",
-    person: "Ana"
+    src: "isa,lucia,blanca.mp4", 
+    title: "Mensaje de tus amigas 💕", 
+    thumbnail: "pr1.jpg",
+    person: "Isa, Lucía y Blanca"
   },
   { 
-    src: "video12.mp4", 
-    title: "Sorpresa de Laura 🎉", 
-    thumbnail: "jul125.jpg",
-    person: "Laura"
+    src: "alejandra,fabiola,aurora.mp4", 
+    title: "Sorpresa de tus amigas 🎉", 
+    thumbnail: "pr2.jpg",
+    person: "Alejandra, Fabiola y Aurora"
   },
   { 
     src: "video9.mp4", 
     title: "Recuerdo de Petra 🌸", 
-    thumbnail: "aug225.jpg",
+    thumbnail: "pr3.jpeg",
     person: "Marta"
   }
 ];
@@ -67,19 +67,69 @@ const personalGalleries = {
       { src: "laura/video3.mp4", caption: "Mensaje del corazón ❤️", thumbnail: "laura/video3_thumb.jpg" }
     ]
   },
+  blanca: {
+    name: "Blanca ✨",
+    photos: [
+      { src: "blanca/b1.jpg", caption: "Las risas nunca faltan contigo 😄" },
+      { src: "blanca/b2.jpg", caption: "Eres luz en los días grises ☀️" },
+      { src: "blanca/b3.jpg", caption: "Momentos únicos e irrepetibles 🌺" },
+      { src: "blanca/b4.jpg", caption: "Mi alma gemela de aventuras 🦋" },
+      { src: "blanca/b5.jpg", caption: "Gracias por ser tan especial 💫" },
+      { src: "blanca/b6.jpg", caption: "¡Feliz cumpleaños, preciosa! 🎁" },
+      { src: "blanca/b7.jpg", caption: "Eres luz en los días grises ☀️" },
+      { src: "blanca/b8.jpg", caption: "Momentos únicos e irrepetibles 🌺" },
+      { src: "blanca/b9.jpg", caption: "Mi alma gemela de aventuras 🦋" },
+      { src: "blanca/b10.jpg", caption: "Gracias por ser tan especial 💫" },
+      { src: "blanca/b11.jpg", caption: "Gracias por ser tan especial 💫" }
+    ],
+    videos: [
+      { src: "blanca/video1.mp4", caption: "Dedicatoria especial 🌟", thumbnail: "marta/video1_thumb.jpg" },
+      { src: "blanca/video2.mp4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video2_thumb.jpg" }
+    ]
+  },
+  lucia: {
+    name: "Lucia ✨",
+    photos: [
+      { src: "lucia/l1.jpg", caption: "Las risas nunca faltan contigo 😄" },
+      { src: "lucia/l2.jpeg", caption: "Eres luz en los días grises ☀️" },
+      { src: "lucia/l3.jpg", caption: "Momentos únicos e irrepetibles 🌺" },
+      { src: "lucia/l4.jpg", caption: "Mi alma gemela de aventuras 🦋" },
+      { src: "lucia/l5.jpg", caption: "Gracias por ser tan especial 💫" },
+      { src: "lucia/l6.jpg", caption: "¡Feliz cumpleaños, preciosa! 🎁" }
+    ],
+    videos: [
+      { src: "lucia/video1.mp4", caption: "Dedicatoria especial 🌟", thumbnail: "marta/video1_thumb.jpg" },
+      { src: "lucia/video2.mp4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video2_thumb.jpg" }
+    ]
+  },
   marta: {
     name: "Marta ✨",
     photos: [
-      { src: "marta/foto1.jpg", caption: "Las risas nunca faltan contigo 😄" },
-      { src: "marta/foto2.jpg", caption: "Eres luz en los días grises ☀️" },
-      { src: "marta/foto3.jpg", caption: "Momentos únicos e irrepetibles 🌺" },
-      { src: "marta/foto4.jpg", caption: "Mi alma gemela de aventuras 🦋" },
-      { src: "marta/foto5.jpg", caption: "Gracias por ser tan especial 💫" },
-      { src: "marta/foto6.jpg", caption: "¡Feliz cumpleaños, preciosa! 🎁" }
+      { src: "marta/m1.jpg", caption: "Las risas nunca faltan contigo 😄" },
+      { src: "marta/m2.jpg", caption: "Eres luz en los días grises ☀️" },
+      { src: "marta/m3.jpg", caption: "Momentos únicos e irrepetibles 🌺" },
+      { src: "marta/m4.jpg", caption: "Mi alma gemela de aventuras 🦋" }
     ],
     videos: [
-      { src: "marta/video1.mp4", caption: "Dedicatoria especial 🌟", thumbnail: "marta/video1_thumb.jpg" },
-      { src: "marta/video2.mp4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video2_thumb.jpg" }
+      { src: "lucia/video1.mp4", caption: "Dedicatoria especial 🌟", thumbnail: "marta/video1_thumb.jpg" },
+      { src: "lucia/video2.mp4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video2_thumb.jpg" }
+    ]
+  },
+  natacha: {
+    name: "Natacha ✨",
+    photos: [
+      { src: "natacha/n1.jpeg", caption: "Las risas nunca faltan contigo 😄" },
+      { src: "natacha/n2.jpeg", caption: "Eres luz en los días grises ☀️" },
+      { src: "natacha/n3.jpeg", caption: "Momentos únicos e irrepetibles 🌺" },
+      { src: "natacha/n4.jpeg", caption: "Mi alma gemela de aventuras 🦋" },
+      { src: "natacha/n5.jpeg", caption: "Las risas nunca faltan contigo 😄" },
+      { src: "natacha/n6.jpeg", caption: "Eres luz en los días grises ☀️" },
+      { src: "natacha/n7.jpeg", caption: "Momentos únicos e irrepetibles 🌺" },
+      { src: "natacha/n8.jpeg", caption: "Mi alma gemela de aventuras 🦋" }
+    ],
+    videos: [
+      { src: "lucia/video1.mp4", caption: "Dedicatoria especial 🌟", thumbnail: "marta/video1_thumb.jpg" },
+      { src: "lucia/video2.mp4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video2_thumb.jpg" }
     ]
   },
   otros: {
