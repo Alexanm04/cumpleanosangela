@@ -7,16 +7,22 @@ const videos = [
     person: "Isa, Lucía y Blanca"
   },
   { 
+    src: "creditos_isa,lucia,blanca.mp4", 
+    title: "Mensaje de tus amigas 💕", 
+    thumbnail: "pr4.jpg",
+    person: "creditos Isa, Lucía y Blanca"
+  },
+  { 
     src: "alejandra,fabiola,aurora.mp4", 
     title: "Sorpresa de tus amigas 🎉", 
     thumbnail: "pr2.jpg",
     person: "Alejandra, Fabiola y Aurora"
   },
   { 
-    src: "video9.mp4", 
-    title: "Recuerdo de Petra 🌸", 
+    src: "natacha,marta.mp4", 
+    title: "Sorpresa de tus amigas 🌸", 
     thumbnail: "pr3.jpeg",
-    person: "Marta"
+    person: "Natacha y Marta"
   }
 ];
 
@@ -40,12 +46,14 @@ const personalGalleries = {
       { src: "alejandra/a13.jpg", caption: "Siempre serás mi persona favorita 💖" },
       { src: "alejandra/a14.jpg", caption: "Recuerdos que atesoro para siempre 🌟" },
       { src: "alejandra/a15.jpg", caption: "¡Feliz cumpleaños, bestie! 🎂" },
-      { src: "alejandra/a16.jpg", caption: "¡Feliz cumpleaños, bestie! 🎂" }
-      
+      { src: "alejandra/a16.jpg", caption: "¡Feliz cumpleaños, bestie! 🎂" },
+      { src: "alejandra/a17.jpg", caption: "¡Feliz cumpleaños, bestie! 🎂" } 
     ],
     videos: [
-      { src: "ana/video1.mp4", caption: "Mensaje especial de cumpleaños 💕", thumbnail: "ana/video1_thumb.jpg" },
-      { src: "ana/video2.mp4", caption: "Recordando momentos divertidos 🎉", thumbnail: "ana/video2_thumb.jpg" }
+      { src: "alejandra/video1.MOV", caption: "Mensaje especial de cumpleaños 💕", thumbnail: "ana/video1_thumb.jpg" },
+      { src: "alejandra/video2.MOV", caption: "Recordando momentos divertidos 🎉", thumbnail: "ana/video2_thumb.jpg" },
+      { src: "alejandra/video3.MOV", caption: "Recordando momentos divertidos 🎉", thumbnail: "ana/video2_thumb.jpg" },
+      { src: "alejandra/video4.mp4", caption: "Recordando momentos divertidos 🎉", thumbnail: "ana/video2_thumb.jpg" }
     ]
   },
   fabiola: {
@@ -62,9 +70,7 @@ const personalGalleries = {
       { src: "fabiola/f9.jpg", caption: "Con amor, tu amiga Laura 💕" }
     ],
     videos: [
-      { src: "laura/video1.mp4", caption: "Felicitación especial 🎂", thumbnail: "laura/video1_thumb.jpg" },
-      { src: "laura/video2.mp4", caption: "Recuerdos de nuestros viajes 🚗", thumbnail: "laura/video2_thumb.jpg" },
-      { src: "laura/video3.mp4", caption: "Mensaje del corazón ❤️", thumbnail: "laura/video3_thumb.jpg" }
+      { src: "fabiola/video1.mp4", caption: "Recordando momentos divertidos 🎉", thumbnail: "ana/video2_thumb.jpg" }
     ]
   },
   blanca: {
@@ -83,8 +89,7 @@ const personalGalleries = {
       { src: "blanca/b11.jpg", caption: "Gracias por ser tan especial 💫" }
     ],
     videos: [
-      { src: "blanca/video1.mp4", caption: "Dedicatoria especial 🌟", thumbnail: "marta/video1_thumb.jpg" },
-      { src: "blanca/video2.mp4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video2_thumb.jpg" }
+      { src: "blanca/video1.mp4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video1_thumb.jpg" }
     ]
   },
   lucia: {
@@ -96,10 +101,6 @@ const personalGalleries = {
       { src: "lucia/l4.jpg", caption: "Mi alma gemela de aventuras 🦋" },
       { src: "lucia/l5.jpg", caption: "Gracias por ser tan especial 💫" },
       { src: "lucia/l6.jpg", caption: "¡Feliz cumpleaños, preciosa! 🎁" }
-    ],
-    videos: [
-      { src: "lucia/video1.mp4", caption: "Dedicatoria especial 🌟", thumbnail: "marta/video1_thumb.jpg" },
-      { src: "lucia/video2.mp4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video2_thumb.jpg" }
     ]
   },
   marta: {
@@ -111,8 +112,8 @@ const personalGalleries = {
       { src: "marta/m4.jpg", caption: "Mi alma gemela de aventuras 🦋" }
     ],
     videos: [
-      { src: "lucia/video1.mp4", caption: "Dedicatoria especial 🌟", thumbnail: "marta/video1_thumb.jpg" },
-      { src: "lucia/video2.mp4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video2_thumb.jpg" }
+      { src: "marta/video1.mp4", caption: "Dedicatoria especial 🌟", thumbnail: "marta/video1_thumb.jpg" },
+      { src: "marta/video2.mp4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video2_thumb.jpg" }
     ]
   },
   natacha: {
@@ -126,30 +127,112 @@ const personalGalleries = {
       { src: "natacha/n6.jpeg", caption: "Eres luz en los días grises ☀️" },
       { src: "natacha/n7.jpeg", caption: "Momentos únicos e irrepetibles 🌺" },
       { src: "natacha/n8.jpeg", caption: "Mi alma gemela de aventuras 🦋" }
+    ]
+  },
+  gag: {
+    name: "Germán ⭐​",
+    photos: [
+      { src: "gag/g1.jpeg", caption: "Las risas nunca faltan contigo 😄" },
+      { src: "gag/g2.jpg", caption: "Eres luz en los días grises ☀️" }
+    ]
+  },
+  aurora: {
+    name: "Aurora ✨",
+    photos: [
+      { src: "aurora/a1.jpg", caption: "Las risas nunca faltan contigo 😄" },
+      { src: "aurora/a2.jpg", caption: "Eres luz en los días grises ☀️" },
+      { src: "aurora/a3.jpg", caption: "Momentos únicos e irrepetibles 🌺" },
+      { src: "aurora/a4.jpg", caption: "Mi alma gemela de aventuras 🦋" },
+      { src: "aurora/a5.jpg", caption: "Las risas nunca faltan contigo 😄" },
+      { src: "aurora/a6.jpg", caption: "Eres luz en los días grises ☀️" },
+      { src: "aurora/a7.jpg", caption: "Momentos únicos e irrepetibles 🌺" },
+      { src: "aurora/a8.jpg", caption: "Mi alma gemela de aventuras 🦋" },
+      { src: "aurora/a9.jpg", caption: "Eres luz en los días grises ☀️" },
+      { src: "aurora/a10.jpg", caption: "Momentos únicos e irrepetibles 🌺" },
+      { src: "aurora/a11.jpg", caption: "Mi alma gemela de aventuras 🦋" },
+      { src: "aurora/a12.jpg", caption: "Mi alma gemela de aventuras 🦋" }
     ],
     videos: [
-      { src: "lucia/video1.mp4", caption: "Dedicatoria especial 🌟", thumbnail: "marta/video1_thumb.jpg" },
-      { src: "lucia/video2.mp4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video2_thumb.jpg" }
+      { src: "aurora/video1.mp4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video1_thumb.jpg" },
+      { src: "aurora/video2.MOV", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video2_thumb.jpg" }
+    ]
+  },
+  isa: {
+    name: "Isa ✨",
+    photos: [
+      { src: "isa/i1.jpg", caption: "Las risas nunca faltan contigo 😄" },
+      { src: "isa/i2.jpg", caption: "Eres luz en los días grises ☀️" },
+      { src: "isa/i3.jpg", caption: "Momentos únicos e irrepetibles 🌺" }
+    ],
+    videos: [
+      { src: "isa/video1.mp4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video1_thumb.jpg" }
     ]
   },
   otros: {
-    name: "Más Amigos 👥",
+    name: "Grupo 👥",
     photos: [
-      { src: "grupo/foto1.jpg", caption: "El grupo completo 👫👫" },
-      { src: "grupo/foto2.jpg", caption: "Celebraciones inolvidables 🎉" },
-      { src: "grupo/foto3.jpg", caption: "Siempre unidos 🤝" },
-      { src: "grupo/foto4.jpg", caption: "Momentos de pura felicidad 😊" },
-      { src: "grupo/foto5.jpg", caption: "Aventuras grupales 🌟" },
-      { src: "grupo/foto6.jpg", caption: "Recuerdos para toda la vida 📸" },
-      { src: "grupo/foto7.jpg", caption: "La mejor compañía 💕" },
-      { src: "grupo/foto8.jpg", caption: "Unidos por la amistad 🌈" },
-      { src: "grupo/foto9.jpg", caption: "Momentos mágicos juntos ✨" },
-      { src: "grupo/foto10.jpg", caption: "¡Feliz cumpleaños de todo el grupo! 🎂" }
+      { src: "grupo/g1.jpeg", caption: "El grupo completo 👫👫" },
+      { src: "grupo/g2.jpeg", caption: "Celebraciones inolvidables 🎉" },
+      { src: "grupo/g3.jpeg", caption: "Siempre unidos 🤝" },
+      { src: "grupo/g4.jpeg", caption: "Momentos de pura felicidad 😊" },
+      { src: "grupo/g5.jpeg", caption: "Aventuras grupales 🌟" },
+      { src: "grupo/g6.jpeg", caption: "Recuerdos para toda la vida 📸" },
+      { src: "grupo/g7.jpg", caption: "La mejor compañía 💕" },
+      { src: "grupo/g8.jpg", caption: "Unidos por la amistad 🌈" },
+      { src: "grupo/g9.jpg", caption: "Momentos mágicos juntos ✨" },
+      { src: "grupo/g10.jpg", caption: "¡Feliz cumpleaños de todo el grupo! 🎂" },
+      { src: "grupo/g11.jpg", caption: "El grupo completo 👫👫" },
+      { src: "grupo/g12.jpg", caption: "Celebraciones inolvidables 🎉" },
+      { src: "grupo/g13.jpg", caption: "Siempre unidos 🤝" },
+      { src: "grupo/g14.jpg", caption: "Momentos de pura felicidad 😊" },
+      { src: "grupo/g15.jpg", caption: "Aventuras grupales 🌟" },
+      { src: "grupo/g16.jpg", caption: "Recuerdos para toda la vida 📸" },
+      { src: "grupo/g17.jpg", caption: "La mejor compañía 💕" },
+      { src: "grupo/g18.jpg", caption: "Unidos por la amistad 🌈" },
+      { src: "grupo/g19.jpg", caption: "Momentos mágicos juntos ✨" },
+      { src: "grupo/g20.jpg", caption: "¡Feliz cumpleaños de todo el grupo! 🎂" },
+      { src: "grupo/g21.jpg", caption: "El grupo completo 👫👫" },
+      { src: "grupo/g22.jpg", caption: "Celebraciones inolvidables 🎉" },
+      { src: "grupo/g23.jpg", caption: "Siempre unidos 🤝" },
+      { src: "grupo/g24.jpg", caption: "Momentos de pura felicidad 😊" },
+      { src: "grupo/g25.jpg", caption: "Aventuras grupales 🌟" },
+      { src: "grupo/g26.jpg", caption: "Recuerdos para toda la vida 📸" },
+      { src: "grupo/g27.jpg", caption: "La mejor compañía 💕" },
+      { src: "grupo/g28.jpg", caption: "Unidos por la amistad 🌈" },
+      { src: "grupo/g29.jpg", caption: "Momentos mágicos juntos ✨" },
+      { src: "grupo/g30.jpg", caption: "¡Feliz cumpleaños de todo el grupo! 🎂" },
+      { src: "grupo/g31.jpg", caption: "El grupo completo 👫👫" },
+      { src: "grupo/g32.jpg", caption: "Celebraciones inolvidables 🎉" },
+      { src: "grupo/g33.jpg", caption: "Siempre unidos 🤝" },
+      { src: "grupo/g34.jpg", caption: "Momentos de pura felicidad 😊" },
+      { src: "grupo/g35.jpg", caption: "Aventuras grupales 🌟" },
+      { src: "grupo/g36.jpg", caption: "Recuerdos para toda la vida 📸" },
+      { src: "grupo/g37.jpg", caption: "La mejor compañía 💕" },
+      { src: "grupo/g38.jpg", caption: "Unidos por la amistad 🌈" },
+      { src: "grupo/g39.jpg", caption: "Momentos mágicos juntos ✨" },
+      { src: "grupo/g40.jpg", caption: "¡Feliz cumpleaños de todo el grupo! 🎂" },
+      { src: "grupo/g41.jpg", caption: "Unidos por la amistad 🌈" },
+      { src: "grupo/g42.jpg", caption: "Momentos mágicos juntos ✨" },
+      { src: "grupo/g43.jpg", caption: "¡Feliz cumpleaños de todo el grupo! 🎂" }
     ],
     videos: [
-      { src: "grupo/video1.mp4", caption: "Mensaje grupal de felicitación 🎊", thumbnail: "grupo/video1_thumb.jpg" },
-      { src: "grupo/video2.mp4", caption: "Recuerdos de fiestas pasadas 🕺💃", thumbnail: "grupo/video2_thumb.jpg" },
-      { src: "grupo/video3.mp4", caption: "Momentos divertidos del grupo 😂", thumbnail: "grupo/video3_thumb.jpg" }
+      { src: "grupo/video1.MOV", caption: "Mensaje grupal de felicitación 🎊", thumbnail: "grupo/video1_thumb.jpg" },
+      { src: "grupo/video2.MOV", caption: "Recuerdos de fiestas pasadas 🕺💃", thumbnail: "grupo/video2_thumb.jpg" },
+      { src: "grupo/video3.MOV", caption: "Momentos divertidos del grupo 😂", thumbnail: "grupo/video3_thumb.jpg" },
+      { src: "grupo/video4.MOV", caption: "Mensaje grupal de felicitación 🎊", thumbnail: "grupo/video1_thumb.jpg" },
+      { src: "grupo/video5.MOV", caption: "Recuerdos de fiestas pasadas 🕺💃", thumbnail: "grupo/video2_thumb.jpg" },
+      { src: "grupo/video6.MOV", caption: "Momentos divertidos del grupo 😂", thumbnail: "grupo/video3_thumb.jpg" },
+      { src: "grupo/video7.MOV", caption: "Mensaje grupal de felicitación 🎊", thumbnail: "grupo/video1_thumb.jpg" },
+      { src: "grupo/video8.mp4", caption: "Recuerdos de fiestas pasadas 🕺💃", thumbnail: "grupo/video2_thumb.jpg" },
+      { src: "grupo/video9.mp4", caption: "Momentos divertidos del grupo 😂", thumbnail: "grupo/video3_thumb.jpg" },
+      { src: "grupo/video10.mp4", caption: "Mensaje grupal de felicitación 🎊", thumbnail: "grupo/video1_thumb.jpg" },
+      { src: "grupo/video11.mp4", caption: "Recuerdos de fiestas pasadas 🕺💃", thumbnail: "grupo/video2_thumb.jpg" },
+      { src: "grupo/video12.mp4", caption: "Momentos divertidos del grupo 😂", thumbnail: "grupo/video3_thumb.jpg" },
+      { src: "grupo/video13.mp4", caption: "Mensaje grupal de felicitación 🎊", thumbnail: "grupo/video1_thumb.jpg" },
+      { src: "grupo/video14.mp4", caption: "Recuerdos de fiestas pasadas 🕺💃", thumbnail: "grupo/video2_thumb.jpg" },
+      { src: "grupo/video15.mp4", caption: "Momentos divertidos del grupo 😂", thumbnail: "grupo/video3_thumb.jpg" },
+      { src: "grupo/video16.mp4", caption: "Mensaje grupal de felicitación 🎊", thumbnail: "grupo/video1_thumb.jpg" },
+      { src: "grupo/video17.mp4", caption: "Recuerdos de fiestas pasadas 🕺💃", thumbnail: "grupo/video2_thumb.jpg" }
     ]
   }
 };
