@@ -101,6 +101,9 @@ const personalGalleries = {
       { src: "lucia/l4.jpg", caption: "Mi alma gemela de aventuras 🦋" },
       { src: "lucia/l5.jpg", caption: "Gracias por ser tan especial 💫" },
       { src: "lucia/l6.jpg", caption: "¡Feliz cumpleaños, preciosa! 🎁" }
+    ],
+    videos: [
+      { src: "lucia/video1.mp4", caption: "Dedicatoria especial 🌟", thumbnail: "marta/video1_thumb.jpg" }
     ]
   },
   marta: {
