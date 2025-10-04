@@ -51,7 +51,7 @@ const personalGalleries = {
     ],
     videos: [
       { src: "alejandra/video1.MOV", caption: "Mensaje especial de cumpleaños 💕", thumbnail: "ana/video1_thumb.jpg" },
-      { src: "alejandra/video2.mp4", caption: "Recordando momentos divertidos 🎉", thumbnail: "ana/video2_thumb.jpg" },
+      { src: "alejandra/video2.mov", caption: "Recordando momentos divertidos 🎉", thumbnail: "ana/video2_thumb.jpg" },
       { src: "grupo/video2.mp4", caption: "Recuerdos de fiestas pasadas 🕺💃", thumbnail: "grupo/video2_thumb.jpg" },
       { src: "alejandra/video3.MOV", caption: "Recordando momentos divertidos 🎉", thumbnail: "ana/video2_thumb.jpg" },
       { src: "alejandra/video4.mp4", caption: "Recordando momentos divertidos 🎉", thumbnail: "ana/video2_thumb.jpg" }
