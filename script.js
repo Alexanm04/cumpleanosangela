@@ -90,7 +90,7 @@ const personalGalleries = {
       { src: "blanca/b11.jpg", caption: "Gracias por ser tan especial 💫" }
     ],
     videos: [
-      { src: "blanca/video1.mp4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video1_thumb.jpg" }
+      { src: "blanca/video1.MP4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video1_thumb.jpg" }
     ]
   },
   lucia: {
@@ -139,14 +139,14 @@ const personalGalleries = {
   aurora: {
     name: "Aurora ✨",
     photos: [
-      { src: "aurora/a1.jpg", caption: "Las risas nunca faltan contigo 😄" },
-      { src: "aurora/a2.jpg", caption: "Eres luz en los días grises ☀️" },
-      { src: "aurora/a3.jpg", caption: "Momentos únicos e irrepetibles 🌺" },
+      { src: "aurora/a1.JPG", caption: "Las risas nunca faltan contigo 😄" },
+      { src: "aurora/a2.JPG", caption: "Eres luz en los días grises ☀️" },
+      { src: "aurora/a3.JPG", caption: "Momentos únicos e irrepetibles 🌺" },
       { src: "aurora/a4.jpg", caption: "Mi alma gemela de aventuras 🦋" },
       { src: "aurora/a5.jpg", caption: "Las risas nunca faltan contigo 😄" },
       { src: "aurora/a6.jpg", caption: "Eres luz en los días grises ☀️" },
       { src: "aurora/a7.jpg", caption: "Momentos únicos e irrepetibles 🌺" },
-      { src: "aurora/a8.jpg", caption: "Mi alma gemela de aventuras 🦋" },
+      { src: "aurora/a8.JPG", caption: "Mi alma gemela de aventuras 🦋" },
       { src: "aurora/a9.jpg", caption: "Eres luz en los días grises ☀️" },
       { src: "aurora/a10.jpg", caption: "Momentos únicos e irrepetibles 🌺" },
       { src: "aurora/a11.jpg", caption: "Mi alma gemela de aventuras 🦋" },
