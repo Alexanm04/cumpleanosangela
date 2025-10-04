@@ -52,6 +52,7 @@ const personalGalleries = {
     videos: [
       { src: "alejandra/video1.MOV", caption: "Mensaje especial de cumpleaños 💕", thumbnail: "ana/video1_thumb.jpg" },
       { src: "alejandra/video2.mp4", caption: "Recordando momentos divertidos 🎉", thumbnail: "ana/video2_thumb.jpg" },
+      { src: "grupo/video2.mp4", caption: "Recuerdos de fiestas pasadas 🕺💃", thumbnail: "grupo/video2_thumb.jpg" },
       { src: "alejandra/video3.MOV", caption: "Recordando momentos divertidos 🎉", thumbnail: "ana/video2_thumb.jpg" },
       { src: "alejandra/video4.mp4", caption: "Recordando momentos divertidos 🎉", thumbnail: "ana/video2_thumb.jpg" }
     ]
@@ -66,8 +67,8 @@ const personalGalleries = {
       { src: "fabiola/f5.jpg", caption: "Eres increíble, nunca cambies ✨" },
       { src: "fabiola/f6.jpg", caption: "Gracias por tantos momentos 🙏" },
       { src: "fabiola/f7.jpg", caption: "¡Que cumplas muchos más! 🎊" },
-      { src: "fabiola/f8.jpg", caption: "Con amor, tu amiga Laura 💕" },
-      { src: "fabiola/f9.jpg", caption: "Con amor, tu amiga Laura 💕" }
+      { src: "fabiola/f8.jpg", caption: "Con amor, tu amiga Fabiola 💕" },
+      { src: "fabiola/f9.jpg", caption: "Con amor, tu amiga Fabiola 💕" }
     ],
     videos: [
       { src: "fabiola/video1.mp4", caption: "Recordando momentos divertidos 🎉", thumbnail: "ana/video2_thumb.jpg" }
@@ -113,10 +114,6 @@ const personalGalleries = {
       { src: "marta/m2.jpg", caption: "Eres luz en los días grises ☀️" },
       { src: "marta/m3.jpg", caption: "Momentos únicos e irrepetibles 🌺" },
       { src: "marta/m4.jpg", caption: "Mi alma gemela de aventuras 🦋" }
-    ],
-    videos: [
-      { src: "marta/video1.mp4", caption: "Dedicatoria especial 🌟", thumbnail: "marta/video1_thumb.jpg" },
-      { src: "marta/video2.mp4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video2_thumb.jpg" }
     ]
   },
   natacha: {
@@ -220,7 +217,6 @@ const personalGalleries = {
     ],
     videos: [
       { src: "grupo/video1.MOV", caption: "Mensaje grupal de felicitación 🎊", thumbnail: "grupo/video1_thumb.jpg" },
-      { src: "grupo/video2.mp4", caption: "Recuerdos de fiestas pasadas 🕺💃", thumbnail: "grupo/video2_thumb.jpg" },
       { src: "grupo/video3.mp4", caption: "Momentos divertidos del grupo 😂", thumbnail: "grupo/video3_thumb.jpg" },
       { src: "grupo/video4.mp4", caption: "Mensaje grupal de felicitación 🎊", thumbnail: "grupo/video1_thumb.jpg" },
       { src: "grupo/video5.mp4", caption: "Recuerdos de fiestas pasadas 🕺💃", thumbnail: "grupo/video2_thumb.jpg" },
