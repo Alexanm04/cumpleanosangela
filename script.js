@@ -133,7 +133,7 @@ const personalGalleries = {
     name: "Germán ⭐​",
     photos: [
       { src: "gag/g1.jpeg", caption: "Las risas nunca faltan contigo 😄" },
-      { src: "gag/g2.jpg", caption: "Eres luz en los días grises ☀️" }
+      { src: "gag/g2.jpeg", caption: "Eres luz en los días grises ☀️" }
     ]
   },
   aurora: {
