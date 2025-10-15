@@ -23,6 +23,18 @@ const videos = [
     title: "Sorpresa de tus amigas 🌸", 
     thumbnail: "pr3.jpeg",
     person: "Natacha y Marta"
+  },
+  { 
+    src: "german.mp4", 
+    title: "Sorpresa de Germán⭐", 
+    thumbnail: "pr4.jpeg",
+    person: "Germán"
+  },
+  { 
+    src: "alejandro.mp4", 
+    title: "Sorpresa de Alejandro🩵", 
+    thumbnail: "pr5.jpeg",
+    person: "Alejandro"
   }
 ];
 
