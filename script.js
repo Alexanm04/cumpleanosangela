@@ -164,7 +164,7 @@ const personalGalleries = {
       { src: "aurora/a12.jpg", caption: "Mi alma gemela de aventuras 🦋" }
     ],
     videos: [
-      { src: "aurora/video1.mp4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video1_thumb.jpg" },
+      { src: "aurora/video1.MP4", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video1_thumb.jpg" },
       { src: "aurora/video2.MOV", caption: "Nuestros momentos más divertidos 🎭", thumbnail: "marta/video2_thumb.jpg" }
     ]
   },
